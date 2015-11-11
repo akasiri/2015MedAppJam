@@ -15,7 +15,11 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
       $state.go('setting');
     };
 
-    //popup for error/success
+    $scope.goLogin = function (){
+      $state.go('signin')
+    };
+
+  //popup for error/success
     var alertError = function(err) {
         var alertPopup = $ionicPopup.alert({
             title: 'Error',
