@@ -1,0 +1,40 @@
+<ion-view view-title="Sign Up">
+
+    <!--<div>-->
+        <!--<ion-header-bar class="bar-light">-->
+            <!--<div class="buttons">-->
+                <!--<button ng-click="cancelSignUp()" id="back_btn_signup" class="button button-positive back-button buttons button-clear header-item">-->
+                    <!--<i class="icon ion-chevron-left"></i>-->
+                    <!--<span class="back-text" style="transform: translate3d(0px, 0px, 0px);">Back</span></button>-->
+            <!--</div>-->
+            <!--<h1 class="title">Sign Up</h1>-->
+        <!--</ion-header-bar>-->
+    <!--</div>-->
+
+<ion-content class="padding">
+    <form>
+        <label class="item item-input">
+            <input type="text" placeholder="First Name" ng-model="user.firstname">
+        </label>
+        <label class="item item-input">
+            <input type  ="text" placeholder="Last Name" ng-model="user.lastname">
+        </label>
+        <label class="item item-input">
+            <input type="text" placeholder="Email Address" ng-model="user.email">
+        </label>
+        <label class="item item-input">
+            <input type="password" placeholder="New Password" ng-model="user.password">
+        </label>
+    </form>
+
+    <div ng-controller="signupCtrl">
+        <button class="button button-block button-balanced" ng-click="signup()">
+                Sign up
+        </button>
+    </div>
+
+    <a class="link_style" href="#/signin">Already have an account?</a>
+    <br><br>
+    <a class="terms" >By creating an account, you agree to the Terms of Use and you acknowledge that you have read the Privacy Policy.</a>
+    </ion-content>
+</ion-view>
