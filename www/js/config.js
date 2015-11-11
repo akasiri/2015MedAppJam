@@ -117,7 +117,7 @@ main.config(['$stateProvider','$urlRouterProvider','$urlMatcherFactoryProvider',
     $stateProvider.state('tabs.goals', goals_tab);
     $stateProvider.state('tabs.calendar', calendar_tab);
 
-    $urlRouterProvider.otherwise('/signin');
+    $urlRouterProvider.otherwise('/tabs.community');
 
     $ionicConfigProvider.tabs.position('bottom');
     $ionicConfigProvider.navBar.alignTitle('center');
