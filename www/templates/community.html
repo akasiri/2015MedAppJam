@@ -3,5 +3,26 @@
     <a class="button button-clear icon ion-gear-b" ng-click="setting"></a>
   </ion-nav-buttons>
   <ion-content>
+    <label class="item item-input item-stacked-label padding">
+      <span class="input-label">Share your thoughts</span>
+      <textarea class="textarea" rows = "4" placeholder = "How are you feeling today?"></textarea>
+    </label>
+
+    <div class="row">
+      <div class="col col-75 text-left">
+        <div class="item range range-positive">
+          <i class="icon ion-sad-outline"></i>
+          <input type="range" name="mood" min="0" max="100" value="0" ng-model = mood>
+          <i class="icon ion-happy-outline"></i>
+        </div>
+      </div>
+
+        <div class="col text-right">
+          <button class="button button-positive">
+            Submit
+          </button>
+        </div>
+    </div>
+
   </ion-content>
 </ion-view>

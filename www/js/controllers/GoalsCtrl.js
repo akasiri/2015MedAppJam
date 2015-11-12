@@ -14,6 +14,7 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
       $state.go('setting');
     };
 
+    $scope.goals = ["washing the car", "walking the dog", "get gold"];
     //Alert success if added the transaction, then clear the fields so user can send another transaction
     var alertSuccess = function () {
         var alertPopup = $ionicPopup.alert({

@@ -13,18 +13,48 @@
 
 <ion-content class="padding">
     <form>
-        <label class="item item-input">
-            <input type="text" placeholder="First Name" ng-model="user.firstname">
-        </label>
-        <label class="item item-input">
-            <input type  ="text" placeholder="Last Name" ng-model="user.lastname">
-        </label>
-        <label class="item item-input">
-            <input type="text" placeholder="Email Address" ng-model="user.email">
-        </label>
-        <label class="item item-input">
-            <input type="password" placeholder="New Password" ng-model="user.password">
-        </label>
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">First Name</span>
+          <input type="text" placeholder="Johnathan" ng-model="user.firstname">
+      </label>
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">Last Name</span>
+          <input type="text" placeholder="Tran" ng-model="user.lastname">
+      </label>
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">Email</span>
+          <input type="text" placeholder="johnathantran@gmail.com" ng-model="user.email">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">Password</span>
+          <input type="password" placeholder="password123" ng-model="user.password">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+          <span class="input-label">About Me (Optional)</span>
+          <textarea class="textarea" rows = "4" placeholder = "I need to get Gold ranking on League."></textarea>
+      </label>
+
+
+
+        <!--<label class="item item-input">-->
+            <!--<input type="text" placeholder="First Name" ng-model="user.firstname">-->
+        <!--</label>-->
+        <!--<label class="item item-input">-->
+            <!--<input type  ="text" placeholder="Last Name" ng-model="user.lastname">-->
+        <!--</label>-->
+        <!--<label class="item item-input">-->
+            <!--<input type="text" placeholder="Email Address" ng-model="user.email">-->
+        <!--</label>-->
+        <!--<label class="item item-input">-->
+            <!--<input type="password" placeholder="New Password" ng-model="user.password">-->
+        <!--</label>-->
+
+        <!--<label class="item item-input">-->
+          <!--<textarea class="textarea" rows = "4" placeholder = "About Me"></textarea>-->
+          <!--&lt;!&ndash;<textarea placeholder="Comments"></textarea>&ndash;&gt;-->
+        <!--</label>-->
     </form>
 
     <div ng-controller="signupCtrl">

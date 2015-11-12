@@ -10,6 +10,9 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     userFactory.fetchcurrent();
     $scope.user = userFactory.getUser();
 
+    $scope.mood = 0;
+
+
     $scope.setting = function() {
       console.log("going to setting");
       $state.go('setting');

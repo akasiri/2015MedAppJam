@@ -3,5 +3,13 @@
     <a class="button button-clear icon ion-gear-b" ng-click="setting"></a>
   </ion-nav-buttons>
   <ion-content>
+    <ion-list ng-repeat = "goal in goals">
+      <li class="item item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox">
+        </label>
+        {{goal}}
+      </li>
+    </ion-list>
   </ion-content>
 </ion-view>
