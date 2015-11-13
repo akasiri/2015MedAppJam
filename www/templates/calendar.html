@@ -5,31 +5,41 @@
   </ion-nav-buttons>
   <ion-content>
     <ionic-datepicker input-obj="datepickerObject">
-  <button small middle class="button button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}
+  <button   class="button button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}
     Choose Date
-
   </button>
+</ionic-datepicker>
+
+
   <div class="item item-divider">
   Goals
 </div>
-<div class="item item-text-wrap">
-  Wash the car.
-</div>
+<ion-list ng-repeat = "goal in myGoals">
+  <li class="item item-checkbox">
+    <label class="checkbox">
+      <input type="checkbox">
+    </label>
+    {{goal}}
+  </li>
+</ion-list>
+
 <div class="item item-divider">
   Favorite Posts
 </div>
-<div class="item item-text-wrap">
-  Live. Laugh. Love.
-</div>
-<div class="item item-text-wrap">
-  Happiness is the best.
-</div>
+<ion-list ng-repeat = "post in favPosts">
+  <li class="item item-text-wrap">
+    {{post}}
+  </li>
+</ion-list>
+
 <div class="item item-divider">
   My Posts
 </div>
-<div class="item item-text-wrap">
-  Had a rough day today.
-</div>
-</ionic-datepicker>
+<ion-list ng-repeat = "post in myPosts">
+  <li class="item item-text-wrap">
+
+    {{post}}
+  </li>
+</ion-list>
   </ion-content>
 </ion-view>

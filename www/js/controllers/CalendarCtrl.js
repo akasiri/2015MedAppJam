@@ -9,7 +9,10 @@ main.controller('CalendarCtrl', ['$scope','$state','$ionicModal', 'userFactory',
   //});
   userFactory.fetchcurrent();
   $scope.user = userFactory.getUser();
-  $scope.goals = ["washing the car", "walking the dog", "get gold"];
+  $scope.myPosts = ["Had a rough day today.", "Feeling a bit better. =)"];
+  $scope.favPosts = ["Live. Laugh. Love.","Happiness is the best."];
+  $scope.myGoals = ["Wash the car.", "Walk the dog.", "Pet my cat."];
+
   //
   // var disabledDates = [
   //       new Date(1437719836326),
