@@ -1,7 +1,35 @@
+
 <ion-view view-title="Calendar">
   <ion-nav-buttons side="right">
     <a class="button button-clear icon ion-gear-b" ng-click="setting"></a>
   </ion-nav-buttons>
   <ion-content>
+    <ionic-datepicker input-obj="datepickerObject">
+  <button small middle class="button button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}
+    Choose Date
+
+  </button>
+  <div class="item item-divider">
+  Goals
+</div>
+<div class="item item-text-wrap">
+  Wash the car.
+</div>
+<div class="item item-divider">
+  Favorite Posts
+</div>
+<div class="item item-text-wrap">
+  Live. Laugh. Love.
+</div>
+<div class="item item-text-wrap">
+  Happiness is the best.
+</div>
+<div class="item item-divider">
+  My Posts
+</div>
+<div class="item item-text-wrap">
+  Had a rough day today.
+</div>
+</ionic-datepicker>
   </ion-content>
 </ion-view>
