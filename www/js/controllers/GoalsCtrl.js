@@ -9,7 +9,14 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
      * NOTIFICATIONS/ IONIC POP UP
      */
 
-    $scope.goals = [];
+    $scope.goals = [
+        {text:"Do stuff",
+            complete:false},
+        {text:"Pet dogs",
+            complete:false},
+        {text:"Pet cats",
+            complete:false},
+    ];
     $scope.newGoal = "";
 
 
