@@ -10947,8 +10947,8 @@
                          * <div class="alert alert-warning">
                          * **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.
                          * Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
-                         * your filters, then you can use capitalization (`myappSubsectionFilterx`) or underscores
-                         * (`myapp_subsection_filterx`).
+                         * your filters, then you can use capitalization (`SocialSolariSubsectionFilterx`) or underscores
+                         * (`SocialSolari_subsection_filterx`).
                          * </div>
                          */
                         filter: invokeLaterAndSetModuleName('$filterProvider', 'register'),
@@ -14906,8 +14906,8 @@
      * Adding via the `$templateCache` service:
      *
      * ```js
-     * var myApp = angular.module('myApp', []);
-     * myApp.run(function($templateCache) {
+     * var SocialSolari = angular.module('SocialSolari', []);
+     * SocialSolari.run(function($templateCache) {
  *   $templateCache.put('templateId.html', 'This is the content of the template');
  * });
      * ```
@@ -25259,15 +25259,15 @@
      *
      * **Example**:  Consider the following case. <a name="example"></a>
      *
-     * - your app is hosted at url `http://myapp.example.com/`
+     * - your app is hosted at url `http://SocialSolari.example.com/`
      * - but some of your templates are hosted on other domains you control such as
      *   `http://srv01.assets.example.com/`,  `http://srv02.assets.example.com/`, etc.
-     * - and you have an open redirect at `http://myapp.example.com/clickThru?...`.
+     * - and you have an open redirect at `http://SocialSolari.example.com/clickThru?...`.
      *
      * Here is what a secure configuration for this scenario might look like:
      *
      * ```
-     *  angular.module('myApp', []).config(function($sceDelegateProvider) {
+     *  angular.module('SocialSolari', []).config(function($sceDelegateProvider) {
  *    $sceDelegateProvider.resourceUrlWhitelist([
  *      // Allow same origin resource loads.
  *      'self',
@@ -25277,7 +25277,7 @@
  *
  *    // The blacklist overrides the whitelist so the open redirect here is blocked.
  *    $sceDelegateProvider.resourceUrlBlacklist([
- *      'http://myapp.example.com/clickThru**'
+ *      'http://SocialSolari.example.com/clickThru**'
  *    ]);
  *  });
      * ```
@@ -25803,7 +25803,7 @@
      * That said, here's how you can completely disable SCE:
      *
      * ```
-     * angular.module('myAppWithSceDisabledmyApp', []).config(function($sceProvider) {
+     * angular.module('SocialSolariWithSceDisabledSocialSolari', []).config(function($sceProvider) {
  *   // Completely disable SCE.  For demonstration purposes only!
  *   // Do not use in new projects.
  *   $sceProvider.enabled(false);
@@ -26808,8 +26808,8 @@
      * <div class="alert alert-warning">
      * **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.
      * Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
-     * your filters, then you can use capitalization (`myappSubsectionFilterx`) or underscores
-     * (`myapp_subsection_filterx`).
+     * your filters, then you can use capitalization (`SocialSolariSubsectionFilterx`) or underscores
+     * (`SocialSolari_subsection_filterx`).
      * </div>
      *
      * ```js
@@ -26897,8 +26897,8 @@
          *    <div class="alert alert-warning">
          *    **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.
          *    Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
-         *    your filters, then you can use capitalization (`myappSubsectionFilterx`) or underscores
-         *    (`myapp_subsection_filterx`).
+         *    your filters, then you can use capitalization (`SocialSolariSubsectionFilterx`) or underscores
+         *    (`SocialSolari_subsection_filterx`).
          *    </div>
          * @returns {Object} Registered filter instance, or if a map of filters was provided then a map
          *    of the registered filter instances.
@@ -41908,14 +41908,14 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      *
      * <pre>
      * <!doctype html>
-     * <html ng-app="myApp">
+     * <html ng-app="SocialSolari">
      * <head>
      *   <script src="js/angular.js"></script>
      *   <!-- Include the ui-router script -->
      *   <script src="js/angular-ui-router.min.js"></script>
      *   <script>
      *     // ...and add 'ui.router' as a dependency
-     *     var myApp = angular.module('myApp', ['ui.router']);
+     *     var SocialSolari = angular.module('SocialSolari', ['ui.router']);
      *   </script>
      * </head>
      * <body>
@@ -44548,7 +44548,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
              *
              * `reload()` is just an alias for:
              * <pre>
-             * $state.transitionTo($state.current, $stateParams, { 
+             * $state.transitionTo($state.current, $stateParams, {
      *   reload: true, inherit: false, notify: true
      * });
              * </pre>
@@ -45297,7 +45297,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
  *     "": {
  *       template: "<h1>HELLO!</h1>"
  *     }
- *   }    
+ *   }
  * })
      * </pre>
      *
@@ -45313,7 +45313,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
  *     "main": {
  *       template: "<h1>HELLO!</h1>"
  *     }
- *   }    
+ *   }
  * })
      * </pre>
      *
@@ -45336,7 +45336,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
  *     "data": {
  *       template: "<data_thing/>"
  *     }
- *   }    
+ *   }
  * })
      * </pre>
      *
@@ -47349,9 +47349,9 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      *
      * @usage
      * ```js
-     * var myApp = angular.module('reallyCoolApp', ['ionic']);
+     * var SocialSolari = angular.module('reallyCoolApp', ['ionic']);
      *
-     * myApp.config(function($ionicConfigProvider) {
+     * SocialSolari.config(function($ionicConfigProvider) {
  *   $ionicConfigProvider.views.maxCache(5);
  *
  *   // note that you can also chain configs
@@ -48014,7 +48014,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      *
      * @usage
      * ```js
-     * var app = angular.module('myApp', ['ionic'])
+     * var app = angular.module('SocialSolari', ['ionic'])
      * app.constant('$ionicLoadingConfig', {
  *   template: 'Default Loading Template...'
  * });
@@ -50114,7 +50114,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
          * in the `$state` definition
          *
          * ```js
-         *   angular.module('myApp', ['ionic'])
+         *   angular.module('SocialSolari', ['ionic'])
          *   .config(function($stateProvider, $ionicConfigProvider) {
  *
  *     // disable preemptive template caching globally
@@ -50829,13 +50829,13 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * For example:
      *
      * ```
-     * angular.module('myApp', ['ngRoute'])`
+     * angular.module('SocialSolari', ['ngRoute'])`
      * ```
      *
      * becomes
      *
      * ```
-     * angular.module('myApp', ['ngRoute', 'ngIOS9UIWebViewPatch'])
+     * angular.module('SocialSolari', ['ngRoute', 'ngIOS9UIWebViewPatch'])
      * ```
      *
      *
@@ -57415,7 +57415,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
      * Next, we need to setup our states that will be rendered.
      *
      * ```js
-     * var app = angular.module('myApp', ['ionic']);
+     * var app = angular.module('SocialSolari', ['ionic']);
      * app.config(function($stateProvider) {
  *   $stateProvider
  *   .state('index', {

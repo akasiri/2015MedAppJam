@@ -14,15 +14,17 @@ main.controller('signupCtrl', ['$scope','$state', function($scope, $state) {
         var lastname    = $scope.user.lastname;
         var email       = $scope.user.email;
         var password    = $scope.user.password;
+        var about       = $scope.user.about;
 
         if (isValidFields(firstname,lastname,email,password)) {
             Parse.User.signUp(email, password, {
                 'first_name': firstname,
                 'last_name': lastname,
-                'email': email
+                'email': email,
+                'about': about
             },{
                 success: function(user) {
-                    alert("successfully signed-up");
+                    alert("Successfully Sign-up!");
                     $state.go('tabs.community');
                 },
                 error: function(user, error) {
