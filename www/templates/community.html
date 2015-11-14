@@ -24,5 +24,59 @@
         </div>
     </div>
 
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Recent
+      </div>
+      <select>
+        <option selected>Recent</option>
+        <option>Inspirational</option>
+        <option>OMG</option>
+        <option><3</option>
+        <option>feel ya</option>
+        <option>Congrats~!~</option>
+        <option>LoL!</option>
+      </select>
+    </label>
+
+
+
+    <div class="list" ng-repeat="message in messages">
+      <div class="item-button-left item " >
+          <button class="button button-clear" ng-click="showUpvotes()">
+            <i class="icon ion-heart assertive"></i>
+
+          </button>
+          {{message.sender}} {{message.date}} message#: {{message.msgid}}
+          <p>{{message.message}}</p>
+
+
+        <div class="row item-button-right">
+          <div class="col">Inspirational + {{msgUpvotes[message.msgid].i}}</div>
+          <div class="col">OMG + {{msgUpvotes[message.msgid].o}}</div>
+          <div class="col"><i class="icon ion-heart"></i> + {{msgUpvotes[message.msgid].h}}</div>
+          <div class="col">feel ya + {{msgUpvotes[message.msgid].f}}</div>
+          <div class="col">Congrats~!~ + {{msgUpvotes[message.msgid].c}}</div>
+          <div class="col">LoL + {{msgUpvotes[message.msgid].l}}</div>
+
+          <button class="button button-clear" ng-click="showFavorite()">
+            <i class="icon ion-star energized"></i>
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+    </div>
+
   </ion-content>
 </ion-view>
+
+<!--<script id="popup_template.html"-->
+        <!--type="text/ng-template">-->
+        <!---->
+<!--</script>-->
