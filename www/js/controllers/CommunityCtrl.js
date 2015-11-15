@@ -11,19 +11,59 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     $scope.user = userFactory.getUser();
 
     $scope.mood = 0;
+    $scope.share = {text: ''};
 
     //$scope.people = [{name:'Johnathan Tran', color: "green"} ];
-    $scope.messages = [{msgid:0, sender:'Johnathan Tran', message:'Got gold in league!', date:'11/12/2015'},
-      {msgid:1, sender:'Arzang Kasiri', message:"I'll paint my body when we get over $800 donations.", date:'11/13/2015'}
-    ];
+    //$scope.messages = [{msgid:0, sender:'Johnathan Tran', message:'Got gold in league!', date:'11/12/2015'},
+    //  {msgid:1, sender:'Arzang Kasiri', message:"I'll paint my body when we get over $800 donations.", date:'11/13/2015'}
+    //];
+
+    $scope.messages = [];
     //inspirational omg heart feelya congrats lol
     $scope.msgUpvotes =[{uid:0, i:1, o:3, h:3, f:7, c:6, l:2},
       {uid:1, i:0, o:0, h:0, f:0, c:0, l:0}
     ];
-
     $scope.setting = function() {
       console.log("going to setting");
       $state.go('setting');
+    };
+
+    $scope.addMessage = function() {
+        console.log($scope.share);
+        var Share = Parse.Object.extend("Share");
+        var share = new Share();
+        share.set("text", $scope.share.text);
+        share.set("categories", {inspirational: 0, omg: 0, heart: 0, feel: 0, congrats: 0, lol: 0});
+
+        share.save(null, {
+          success: function(gameScore) {
+            // Execute any logic that should take place after the object is saved.
+            alert('New object created with objectId: ' + share.id);
+          },
+          error: function(gameScore, error) {
+            // Execute any logic that should take place if the save fails.
+            // error is a Parse.Error with an error code and message.
+            alert('Failed to create new object, with error code: ' + error.message);
+          }
+        });
+    };
+
+    $scope.getShares = function() {
+        var Share = Parse.Object.extend("Share");
+        var query = new Parse.Query(Share);
+        query.limit(10);
+        query.descending("createdAt");
+        query.find({
+          success: function(results) {
+              for (var i = 0; i < results.length; i++) {
+                  $scope.messages[i] = results[i];
+              };
+              console.log($scope.messages);
+          },
+          error: function(error) {
+              alert("Error: " + error.code + " " + error.message);
+          }
+        });
     };
 
   //popup for error/success
@@ -55,6 +95,21 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     });
     confirmPopup.then(function(res) {
       if(res) {
+        console.log('You are sure');
+      } else {
+        console.log('You are not sure');
+      }
+    });
+  };
+
+  $scope.showSubmit = function() {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Share to world?',
+      template: 'Are you sure you want share this?'
+    });
+    confirmPopup.then(function(res) {
+      if(res) {
+        $scope.addMessage();
         console.log('You are sure');
       } else {
         console.log('You are not sure');
@@ -138,5 +193,5 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     }, 3000);
   };
 
-
+  $scope.getShares();
 }]);

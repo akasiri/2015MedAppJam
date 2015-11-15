@@ -1,15 +1,57 @@
 <ion-view view-title="Goals">
+
   <ion-nav-buttons side="right">
-    <a class="button button-clear icon ion-gear-b" ng-click="setting"></a>
+    <a class="button button-clear icon ion-gear-b" href="#/setting" ng-click="setting"></a>
   </ion-nav-buttons>
-  <ion-content>
-    <ion-list ng-repeat = "goal in goals">
-      <li class="item item-checkbox">
-        <label class="checkbox">
-          <input type="checkbox">
-        </label>
-        {{goal}}
-      </li>
+
+  <ion-content attribute = "id=Goals">
+    <ion-list>
+
+        <ion-item class="item item-checkbox" ng-repeat = "goal in goals">
+            <label class="checkbox">
+                <input type="checkbox" ng-Click="toggleComplete(goal)">
+            </label>
+            {{goal.text}}
+            <ion-option-button class="button-assertive" style="bg=red" ng-click="remove(goal)">Remove</ion-option-button>
+        </ion-item>
+
+        <form ng-submit="add(newGoal)">
+            <input type="text" placeholder="Enter a goal" ng-model="newGoal" style="float:left;"/>
+            <button class="button button-balanced" type="submit" style="float:right;">Submit</button>
+        </form>
+
     </ion-list>
+
+
+<!--
+  <label class="item item-input">
+    <input type="text" placeholder="First Name">
+  </label>
+
+    <input type="text" ng-model = "test">
+    <button class="button button-light" ng-click = "function(test)">
+        button-light
+    </button>
+
+    <div class="bar bar-footer bar-balanced" style="position: fixed; bottom: 3.5em;">
+          <button class="button button-balanced col col-50" style="">add</button>
+          <button class="button button-balanced col col-50" style="">remove</button>
+    </div>
+-->
+<!--
+<div class="row">
+  <div class="col col-33 col-offset-33">.col</div>
+  <div class="col">.col</div>
+</div>
+
+<div class="row">
+  <div class="col col-33">.col</div>
+  <div class="col col-33 col-offset-33">.col</div>
+</div>
+
+<div class="row">
+  <div class="col col-33 col-offset-67">.col</div>
+</div>
+-->
   </ion-content>
 </ion-view>

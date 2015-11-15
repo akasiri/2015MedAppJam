@@ -1,11 +1,15 @@
 <ion-view view-title="Community">
   <ion-nav-buttons side="right">
+<<<<<<< HEAD
     <a class="button button-clear icon ion-gear-b" href="#/setting" ng-click="setting"></a>
+=======
+    <a class="button button-clear icon ion-gear-b" href="#/setting"></a>
+>>>>>>> 7d35def3cd044f9788dfbf72eaf94aa8ffc21599
   </ion-nav-buttons>
   <ion-content>
     <label class="item item-input item-stacked-label padding">
       <span class="input-label">Share your thoughts</span>
-      <textarea class="textarea" rows = "4" placeholder = "How are you feeling today?"></textarea>
+      <textarea ng-model="share.text" class="textarea" rows = "4" placeholder = "How are you feeling today?"></textarea>
     </label>
 
     <div class="row">
@@ -18,7 +22,7 @@
       </div>
 
         <div class="col text-right">
-          <button class="button button-positive">
+          <button class="button button-positive" ng-click="addMessage()">
             Submit
           </button>
         </div>
@@ -47,17 +51,17 @@
             <i class="icon ion-heart assertive"></i>
 
           </button>
-          {{message.sender}} {{message.date}} message#: {{message.msgid}}
-          <p>{{message.message}}</p>
+          {{message.createdAt}}
+          <p>{{message.attributes.text}}</p>
 
 
         <div class="row item-button-right">
-          <div class="col">Inspirational + {{msgUpvotes[message.msgid].i}}</div>
-          <div class="col">OMG + {{msgUpvotes[message.msgid].o}}</div>
-          <div class="col"><i class="icon ion-heart"></i> + {{msgUpvotes[message.msgid].h}}</div>
-          <div class="col">feel ya + {{msgUpvotes[message.msgid].f}}</div>
-          <div class="col">Congrats~!~ + {{msgUpvotes[message.msgid].c}}</div>
-          <div class="col">LoL + {{msgUpvotes[message.msgid].l}}</div>
+          <div class="col">Inspirational + {{message.attributes.categories.inspirational}}</div>
+          <div class="col">OMG + {{message.attributes.categories.omg}}</div>
+          <div class="col"><i class="icon ion-heart"></i> + {{message.attributes.categories.heart}}</div>
+          <div class="col">feel ya + {{message.attributes.categories.feel}}</div>
+          <div class="col">Congrats~!~ + {{message.attributes.categories.congrats}}</div>
+          <div class="col">LoL + {{message.attributes.categories.lol}}</div>
 
           <button class="button button-clear" ng-click="showFavorite()">
             <i class="icon ion-star energized"></i>
