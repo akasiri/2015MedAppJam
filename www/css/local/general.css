@@ -1,13 +1,15 @@
 .card-wrapper2 {
-  height: 80%;
-  padding: 10px 10px;
+  height: 43em;
+  padding: 10px 10px 10px 10px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 80%;
+  width: 96.5%;
   top: 60%;
   left: 0;
-  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  position: relative;
 }
 
 .popup1 .popup{
@@ -19,11 +21,11 @@
 }
 
 .xcard2scroll {
-  height: 85%;
+  height: 95%;
 }
 
 .xcard2.card {
-  /*height: 100%;*/
+  height: 100%;
   width: 100%;
   /*length: 50%;*/
   margin: 0;
@@ -32,26 +34,4 @@
   background-color: #fff;
 }
 
-/*.card-wrapper1 {*/
-  /*height: 60%;*/
-  /*padding: 10px 10px;*/
-  /*-webkit-box-sizing: border-box;*/
-  /*-moz-box-sizing: border-box;*/
-  /*box-sizing: border-box;*/
-  /*width: 100%;*/
-  /*left: 0;*/
-  /*position: absolute;*/
-/*}*/
 
-/*.xcard1scroll {*/
-  /*height:85%;*/
-/*}*/
-
-/*.xcard1.card {*/
-  /*!*height: 80%;*!*/
-  /*width: 100%;*/
-  /*margin: 0;*/
-  /*overflow: hidden;*/
-  /*border-radius: 8px !important;*/
-  /*background-color: #fff;*/
-/*}*/
