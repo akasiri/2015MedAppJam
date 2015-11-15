@@ -11,7 +11,11 @@
 }
 
 .popup1 .popup{
-  width: 1000px!important;
+  width: 100%;
+}
+
+.paddingRight1 {
+  padding-right: 20%;
 }
 
 .xcard2scroll {
