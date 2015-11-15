@@ -1,57 +1,49 @@
 <ion-view view-title="Goals">
 
-  <ion-nav-buttons side="right">
-    <a class="button button-clear icon ion-gear-b" href="#/setting" ng-click="setting"></a>
-  </ion-nav-buttons>
+    <ion-nav-buttons side="left" ng-show="!showAdd">
+        <a class="button button-clear icon ion-compose" ng-click="toggleShowAdd()"></a>
+    </ion-nav-buttons>
 
-  <ion-content attribute = "id=Goals">
-    <ion-list>
+    <ion-nav-buttons side="right">
+        <a class="button button-clear icon ion-gear-b" href="#/setting" ng-click="setting"></a>
+    </ion-nav-buttons>
 
-        <ion-item class="item item-checkbox" ng-repeat = "goal in goals">
-            <label class="checkbox">
-                <input type="checkbox" ng-Click="toggleComplete(goal)">
-            </label>
+    <!-- <ion-content>
+
+        <ion-checkbox ng-repreat="goal in goals" ng-model="goals;goal.complete" ng-checked="goal.complete">
             {{goal.text}}
             <ion-option-button class="button-assertive" style="bg=red" ng-click="remove(goal)">Remove</ion-option-button>
-        </ion-item>
+        </ion-checkbox>
 
         <form ng-submit="add(newGoal)">
             <input type="text" placeholder="Enter a goal" ng-model="newGoal" style="float:left;"/>
             <button class="button button-balanced" type="submit" style="float:right;">Submit</button>
         </form>
 
-    </ion-list>
+    </ion-content> -->
 
+    <ion-content>
 
-<!--
-  <label class="item item-input">
-    <input type="text" placeholder="First Name">
-  </label>
+        <div class="list" ng-show="showAdd">
+          <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+              <input type="text" placeholder="Enter a goal" ng-model="newGoal"/>
+            </label>
+                <button class="button button-balanced" ng-click="add(newGoal)">Submit</button>
+            </button>
+          </div>
 
-    <input type="text" ng-model = "test">
-    <button class="button button-light" ng-click = "function(test)">
-        button-light
-    </button>
+        </div>
 
-    <div class="bar bar-footer bar-balanced" style="position: fixed; bottom: 3.5em;">
-          <button class="button button-balanced col col-50" style="">add</button>
-          <button class="button button-balanced col col-50" style="">remove</button>
-    </div>
--->
-<!--
-<div class="row">
-  <div class="col col-33 col-offset-33">.col</div>
-  <div class="col">.col</div>
-</div>
+        <ion-list>
+            <ion-item ng-repeat="goal in goals">
+                <input type="checkbox" ng-click="toggleComplete(goal)">
+                {{ goal.text }}
+                <ion-option-button class="button-assertive button-remove" ng-click="remove(goal)">Remove</ion-option-button>
+            </ion-item>
+        </ion-list>
 
-<div class="row">
-  <div class="col col-33">.col</div>
-  <div class="col col-33 col-offset-33">.col</div>
-</div>
+        <!-- {{goals}} -->
 
-<div class="row">
-  <div class="col col-33 col-offset-67">.col</div>
-</div>
--->
-  </ion-content>
+    </ion-content>
 </ion-view>
