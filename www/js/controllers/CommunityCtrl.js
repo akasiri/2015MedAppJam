@@ -138,6 +138,36 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
   };
 
 
+  //buttons on the bottom of posts
+  $scope.clickedInspirational = function() {
+
+  }
+  $scope.clickedOmg = function() {
+
+  }
+  $scope.clickedHeart = function() {
+
+  }
+  $scope.clickedFeel = function() {
+
+  }
+  $scope.clickedGrats = function() {
+
+  }
+  $scope.clickedLol = function() {
+
+  }
+
+
+
+
+
+
+
+
+
+
+
 
 // Triggered on a button click, or some other target
   $scope.showUpvotes = function() {
@@ -210,21 +240,6 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     });
   };
 
-  ////refresh function
-  //angular.module('testApp', ['ionic'])
-  //  .controller('MyController', function($scope, $http) {
-  //    $scope.items = [1,2,3];
-  //    $scope.doRefresh = function() {
-  //      $http.get('/new-items')
-  //        .success(function(newItems) {
-  //          $scope.items = newItems;
-  //        })
-  //        .finally(function() {
-  //          // Stop the ion-refresher from spinning
-  //          $scope.$broadcast('scroll.refreshComplete');
-  //        });
-  //    };
-  //  });
 
   $scope.doRefresh = function() {
     $scope.getShares();
