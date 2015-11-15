@@ -12,7 +12,7 @@
     return {
       restrict: 'AE',
       replace: true,
-      scope: {
+      scope:{
         inputObj: "=inputObj"
       },
       link: function (scope, element, attrs) {
