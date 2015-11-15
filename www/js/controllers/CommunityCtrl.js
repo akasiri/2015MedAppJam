@@ -102,6 +102,21 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     });
   };
 
+  $scope.showSubmit = function() {
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Share to world?',
+      template: 'Are you sure you want share this?'
+    });
+    confirmPopup.then(function(res) {
+      if(res) {
+        $scope.addMessage();
+        console.log('You are sure');
+      } else {
+        console.log('You are not sure');
+      }
+    });
+  };
+
 
 
 // Triggered on a button click, or some other target
