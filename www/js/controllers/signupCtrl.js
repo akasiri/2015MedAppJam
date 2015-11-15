@@ -21,7 +21,8 @@ main.controller('signupCtrl', ['$scope','$state', function($scope, $state) {
                 'first_name': firstname,
                 'last_name': lastname,
                 'email': email,
-                'about': about
+                'about': about,
+                'favorites': []
             },{
                 success: function(user) {
                     alert("Successfully Sign-up!");

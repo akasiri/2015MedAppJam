@@ -2,9 +2,6 @@
 main.controller('email-loginCtrl', function($scope,$state,$ionicPopup,userFactory) {
     //console.log('login-Ctrl');
 
-    $scope.backToSignUp = function() {
-        $state.go('signup');
-    };
 
     $scope.createUser = function(){
       $state.go('signup');
@@ -14,12 +11,13 @@ main.controller('email-loginCtrl', function($scope,$state,$ionicPopup,userFactor
      * Validates a user from logging in, checking their credentials
      * If successful, they get logged in, else ERROR
      */
+    $scope.data = {email: '', password: ''};
+    console.log($scope.data.email);
     $scope.loginEmail = function() {
         if (isValidFields($scope.data.email, $scope.data.password)) {
 
             Parse.User.logIn($scope.data.email, $scope.data.password, {
                 success: function (user) {
-                    //console.log(user);
                     alertSuccess();
                 },
                 error: function (user, error) {

@@ -140,18 +140,18 @@ main.run(['$state', '$rootScope', function ($state, $rootScope, $ionicPlatform) 
 
     $rootScope.$on("$stateChangeStart", function (event, toState, current) {
         //if there isn't a user logged in to Parse, and if the state they're going to is login pages, let them go to login.
-        //if (Parse.User.current() == null) {
-        //    if (toState.name === 'login' || toState.name === 'signin' || toState.name === 'signup' || toState.name === 'resetPassword') {
-        //    } else {
-        //        event.preventDefault();
-        //        $state.go('login');
-        //    }
-        //}else {
-        //    //if there is a user logged in, don't allow user to go to login pages. Redirect to home page.
-        //    if (toState.name === 'login' || toState.name === 'signin' || toState.name === 'signup' || toState.name === 'resetPassword') {
-        //        event.preventDefault();
-        //        $state.go('tabs.community')
-        //    }
-        //}
+        if (Parse.User.current() == null) {
+            if (toState.name === 'signin' || toState.name === 'signup' || toState.name === 'resetPassword') {
+            } else {
+                event.preventDefault();
+                $state.go('signin');
+            }
+        }else {
+            //if there is a user logged in, don't allow user to go to login pages. Redirect to home page.
+            if (toState.name === 'signin' || toState.name === 'signup' || toState.name === 'resetPassword') {
+                event.preventDefault();
+                $state.go('tabs.community')
+            }
+        }
     });
 }]);

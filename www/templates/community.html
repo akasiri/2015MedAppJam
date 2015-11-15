@@ -85,7 +85,7 @@
             <button class="button button-clear" ng-click="showUpvotes()">
               <i class="icon ion-heart assertive"></i>
             </button>
-            {{message.createdAt}}
+            {{timeAgo(message.createdAt)}}
 
             <p class="paddingRight1">{{message.attributes.text}}</p>
 
