@@ -20,10 +20,10 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
     $scope.newGoal = "";
 
 
-    var checkIfInArray = function(x, list) {
+    var checkIfGoalExists = function(goal, list) {
         var listLen = list.length;
         for (var i = 0; i < listLen; i++) {
-            if (x == list[i]) {
+            if (goal == list[i].text) {
                 return true;
             }
         }
@@ -35,7 +35,7 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
     };
 
     $scope.add = function(newGoal) {
-        if (!checkIfInArray(newGoal, $scope.goals) && (newGoal != "")) {
+        if (!checkIfGoalExists(newGoal, $scope.goals) && (newGoal != "")) {
             $scope.goals.push({text:newGoal,complete:false});
         }
         else {

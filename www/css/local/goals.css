@@ -1,0 +1,30 @@
+.button-remove {
+}
+
+.tex-input {
+    float:left;
+}
+
+.button-submit {
+    float:right;
+}
+
+/*<ion-content>
+    <ion-list>
+
+        <ion-item ng-repeat="goal in goals">
+            <input type="checkbox" ng-click="toggleComplete(goal)">
+            {{ goal.text }}
+            <ion-option-button class="button-assertive button-remove" ng-click="remove(goal)">Remove</ion-option-button>
+        </ion-item>
+
+    <form ng-submit="add(newGoal)">
+        <ion-input type="text text-input" placeholder="Enter a goal" ng-model="newGoal"/>
+        <button class="button button-balanced button-submit" type="submit">Submit</button>
+    </form>
+
+    </ion-list>
+
+    {{goals}}
+
+</ion-content>*/
