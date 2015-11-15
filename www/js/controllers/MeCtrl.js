@@ -98,7 +98,7 @@ main.controller('MeCtrl', ['$scope','$state', 'userFactory', function($scope, $s
 
 
 
-  $scope.deletefav = function(post) {
+  $scope.delete_fav = function(post) {
     var alertPopup = $ionicPopup.alert({
       title: 'Delete',
       template: 'Do you want to delete from my favorites?'
@@ -109,7 +109,7 @@ main.controller('MeCtrl', ['$scope','$state', 'userFactory', function($scope, $s
 
   };
 
-  $scope.deleteshare = function(post) {
+  $scope.delete_share = function(post) {
     var alertPopup = $ionicPopup.alert({
       title: 'Delete',
       template: 'Do you want to delete from my shares?'
