@@ -139,7 +139,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
       subTitle: '',
       scope: $scope,
       buttons: [
-        { text: 'Inspirational',
+        { text: 'InspirE',
         type: 'button button-royal button-small',
         //onTap: function(i) {
         //  //code
@@ -163,7 +163,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
           //  //code
           //}
         },
-        { text: 'Congrats~!~',
+        { text: 'grats!',
           type: 'button-balanced button-small',
           //onTap: function(c) {
           //  //code
