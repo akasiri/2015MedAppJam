@@ -1,10 +1,6 @@
 <ion-view view-title="Community">
   <ion-nav-buttons side="right">
-<<<<<<< HEAD
-    <a class="button button-clear icon ion-gear-b" href="#/setting" ng-click="setting"></a>
-=======
     <a class="button button-clear icon ion-gear-b" href="#/setting"></a>
->>>>>>> 7d35def3cd044f9788dfbf72eaf94aa8ffc21599
   </ion-nav-buttons>
   <ion-content>
     <label class="item item-input item-stacked-label padding">
@@ -43,15 +39,11 @@
       </select>
     </label>
 
-    <!--&lt;!&ndash;refresher&ndash;&gt;-->
-    <!--<ion-refresher class="MyController"-->
-      <!--pulling-text="Pull to refresh..."-->
-      <!--on-refresh="doRefresh()">-->
-    <!--</ion-refresher>-->
-    <!--<ion-list>-->
-      <!--<ion-item ng-repeat="item in items"></ion-item>-->
-    <!--</ion-list>-->
-
+    <!--refresher-->
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <div class="list" ng-repeat="message in messages">
 
         <div class="item-button-left item-text-wrap " >

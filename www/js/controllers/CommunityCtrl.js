@@ -46,6 +46,9 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
             alert('Failed to create new object, with error code: ' + error.message);
           }
         });
+
+        $('input[type="text"], textarea').val('');
+        $scope.doRefresh();
     };
 
     $scope.getShares = function() {
@@ -188,9 +191,6 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     myPopup.then(function(res) {
       console.log('Tapped!', res);
     });
-    $timeout(function() {
-      myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 3000);
   };
 
   ////refresh function
@@ -208,6 +208,11 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
   //        });
   //    };
   //  });
+
+  $scope.doRefresh = function() {
+    $scope.getShares();
+    $scope.$broadcast('scroll.refreshComplete');
+  }
 
   $scope.getShares();
 }]);
