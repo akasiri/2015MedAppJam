@@ -34,6 +34,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
         var share = new Share();
         share.set("text", $scope.share.text);
         share.set("categories", {inspirational: 0, omg: 0, heart: 0, feel: 0, congrats: 0, lol: 0});
+        share.set("createdBy", Parse.User.current());
 
         share.save(null, {
           success: function(gameScore) {
@@ -46,6 +47,10 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
             alert('Failed to create new object, with error code: ' + error.message);
           }
         });
+    };
+
+    $scope.timeAgo = function(date) {
+      return moment(date).startOf('second').fromNow();
     };
 
     $scope.getShares = function() {
