@@ -18,6 +18,7 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
             complete:false},
     ];
     $scope.newGoal = "";
+    $scope.showAdd = false;
 
 
     var checkIfGoalExists = function(goal, list) {
@@ -30,6 +31,11 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
         return false;
     };
 
+
+    $scope.toggleShowAdd = function () {
+        $scope.showAdd = !$scope.showAdd;
+    };
+
     $scope.remove = function(goal) {
         $scope.goals.splice($scope.goals.indexOf(goal), 1);
     };
@@ -37,6 +43,7 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
     $scope.add = function(newGoal) {
         if (!checkIfGoalExists(newGoal, $scope.goals) && (newGoal != "")) {
             $scope.goals.push({text:newGoal,complete:false});
+            $scope.showAdd = false;
         }
         else {
             var alertPopup = $ionicPopup.alert({
