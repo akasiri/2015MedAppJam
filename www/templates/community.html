@@ -5,20 +5,55 @@
   <ion-content>
     <label class="item item-input item-stacked-label padding">
       <span class="input-label">Share your thoughts</span>
-      <textarea ng-model="share.text" class="textarea" rows = "4" placeholder = "How are you feeling today?"></textarea>
+      <textarea ng-model="share.text" class="textarea" ng-class="{'royal': slider.rangeValue==1, 'calm': slider.rangeValue==2, 'assertive': slider.rangeValue==3, 'energized': slider.rangeValue==4, 'balanced': slider.rangeValue==5, 'positive': slider.rangeValue==6}" rows = "4" placeholder = "How are you feeling today?"></textarea>
     </label>
 
     <div class="row">
       <div class="col col-75 text-left">
-        <div class="item range positive range-assertive" >
+        <div ng-show="slider.rangeValue==0" class="item range range-dark">
           <i class="icon ion-sad-outline"></i>
-          <input type="range" name="mood" min="0" max="5" value="5" ng-model="moodValue">
+          <input type="range" name="mood" min="0" max="6" value="{{slider.rangeValue}}" ng-model="slider.rangeValue">
+          <i class="icon ion-happy-outline"></i>
+        </div>
+        <div ng-show="slider.rangeValue==1" class="item range range-royal">
+          <i class="icon ion-sad-outline"></i>
+          <input type="range" name="mood" min="0" max="6" value="{{slider.rangeValue}}" ng-model="slider.rangeValue">
+          <i class="icon ion-happy-outline"></i>
+        </div>
+
+        <div ng-show="slider.rangeValue==2" class="item range range-calm">
+          <i class="icon ion-sad-outline"></i>
+          <input type="range" name="mood" min="0" max="6" value="{{slider.rangeValue}}" ng-model="slider.rangeValue">
+          <i class="icon ion-happy-outline"></i>
+        </div>
+
+        <div ng-if="slider.rangeValue==3" class="item range range-assertive">
+          <i class="icon ion-sad-outline"></i>
+          <input type="range" name="mood" min="0" max="6" value="{{slider.rangeValue}}" ng-model="slider.rangeValue">
+          <i class="icon ion-happy-outline"></i>
+        </div>
+
+        <div ng-show="slider.rangeValue==4" class="item range range-energized">
+          <i class="icon ion-sad-outline"></i>
+          <input type="range" name="mood" min="0" max="6" value="{{slider.rangeValue}}" ng-model="slider.rangeValue">
+          <i class="icon ion-happy-outline"></i>
+        </div>
+
+        <div ng-show="slider.rangeValue==5" class="item range range-balanced">
+          <i class="icon ion-sad-outline"></i>
+          <input type="range" name="mood" min="0" max="6" value="{{slider.rangeValue}}" ng-model="slider.rangeValue">
+          <i class="icon ion-happy-outline"></i>
+        </div>
+
+        <div ng-show="slider.rangeValue==6" class="item range range-positive">
+          <i class="icon ion-sad-outline"></i>
+          <input type="range" name="mood" min="0" max="6" value="{{slider.rangeValue}}" ng-model="slider.rangeValue">
           <i class="icon ion-happy-outline"></i>
         </div>
       </div>
 
         <div class="col text-right">
-          <button class="button button-positive" ng-click="showSubmit()">
+          <button class="button" ng-class="{'button-stable': slider.rangeValue==0, 'button-royal': slider.rangeValue==1, 'button-calm': slider.rangeValue==2, 'button-assertive': slider.rangeValue==3, 'button-energized': slider.rangeValue==4, 'button-balanced': slider.rangeValue==5, 'button-positive': slider.rangeValue==6}" ng-click="showSubmit()">
             Submit
           </button>
         </div>

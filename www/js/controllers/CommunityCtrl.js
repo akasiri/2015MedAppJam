@@ -18,6 +18,18 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     //  {msgid:1, sender:'Arzang Kasiri', message:"I'll paint my body when we get over $800 donations.", date:'11/13/2015'}
     //];
 
+
+    $scope.slider = {};
+    $scope.slider.rangeValue = 0;
+
+    $scope.$watch('slider.rangeValue',function(val,old){
+      $scope.slider.rangeValue = parseInt(val);
+      console.log('range=' + $scope.slider.rangeValue)
+
+    });
+
+
+
     $scope.messages = [];
     //inspirational omg heart feelya congrats lol
     $scope.msgUpvotes =[{uid:0, i:1, o:3, h:3, f:7, c:6, l:2},
