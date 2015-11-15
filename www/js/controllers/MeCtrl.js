@@ -74,12 +74,52 @@ main.controller('MeCtrl', ['$scope','$state', 'userFactory', function($scope, $s
     {
       title: 'yolo',
       date: '12 Sep'
+    },
+
+    {
+      title: 'lol',
+      date: '28 Nov'
+    },
+    {
+      title: 'pop',
+      date: '30 Oct'
+    },
+    {
+      title: 'hoho',
+      date: '1 Sep'
+    },
+    {
+      title: 'yolo',
+      date: '12 Sep'
     }
+
 
   ];
 
 
 
+  $scope.deletefav = function(post) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Delete',
+      template: 'Do you want to delete from my favorites?'
+    });
+    alertPopup.then(function(res) {
+      $scope.myfav.splice($scope.myfav.indexOf(post), 1);
+    });
+
+  };
+
+  $scope.deleteshare = function(post) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Delete',
+      template: 'Do you want to delete from my shares?'
+    });
+    alertPopup.then(function(res) {
+      $scope.myshare.splice($scope.myshare.indexOf(post), 1);
+    });
+
+
+  };
 
 
   $scope.shouldShowDelete = false;
