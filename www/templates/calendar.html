@@ -6,13 +6,13 @@
   <ion-content>
     <ionic-datepicker input-obj="datepickerObject">
   <button   class="button button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}
-    Choose Date
+
   </button>
 </ionic-datepicker>
 
 
   <div class="item item-divider">
-  Goals
+  Goals from {{datepickerObject.inputDate| date:'dd - MMMM - yyyy'}}
 </div>
 <ion-list ng-repeat = "goal in myGoals">
   <li class="item item-checkbox">

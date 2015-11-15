@@ -47,6 +47,9 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
             alert('Failed to create new object, with error code: ' + error.message);
           }
         });
+
+        $('input[type="text"], textarea').val('');
+        $scope.doRefresh();
     };
 
     $scope.timeAgo = function(date) {
@@ -137,38 +140,38 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
       scope: $scope,
       buttons: [
         { text: 'Inspirational',
-        type: 'button button-royal',
+        type: 'button button-royal button-small',
         //onTap: function(i) {
         //  //code
         //}
         },
         { text: 'OMG',
-          type: 'button-calm',
+          type: 'button-calm button-small',
           //onTap: function(o) {
           //  //code
           //}
         },
         { text: '<3',
-          type: 'button-assertive',
+          type: 'button-assertive button-small',
           //onTap: function(h) {
           //  //code
           //}
         },
         { text: 'feel ya',
-          type: 'button-energized',
+          type: 'button-energized button-small',
           //onTap: function(f) {
           //  //code
           //}
         },
         { text: 'Congrats~!~',
-          type: 'button-balanced',
+          type: 'button-balanced button-small',
           //onTap: function(c) {
           //  //code
           //}
         },
         {
           text: 'LoL',
-          type: 'button-positive',
+          type: 'button-positive button-small',
           //onTap: function(l) {
           //  //code
           //}
@@ -193,10 +196,28 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     myPopup.then(function(res) {
       console.log('Tapped!', res);
     });
-    $timeout(function() {
-      myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 3000);
   };
+
+  ////refresh function
+  //angular.module('testApp', ['ionic'])
+  //  .controller('MyController', function($scope, $http) {
+  //    $scope.items = [1,2,3];
+  //    $scope.doRefresh = function() {
+  //      $http.get('/new-items')
+  //        .success(function(newItems) {
+  //          $scope.items = newItems;
+  //        })
+  //        .finally(function() {
+  //          // Stop the ion-refresher from spinning
+  //          $scope.$broadcast('scroll.refreshComplete');
+  //        });
+  //    };
+  //  });
+
+  $scope.doRefresh = function() {
+    $scope.getShares();
+    $scope.$broadcast('scroll.refreshComplete');
+  }
 
   $scope.getShares();
 }]);

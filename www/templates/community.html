@@ -18,7 +18,7 @@
       </div>
 
         <div class="col text-right">
-          <button class="button button-positive" ng-click="addMessage()">
+          <button class="button button-positive" ng-click="showSubmit()">
             Submit
           </button>
         </div>
@@ -39,33 +39,38 @@
       </select>
     </label>
 
-
-
+    <!--refresher-->
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <div class="list" ng-repeat="message in messages">
-      <div class="item-button-left item " >
-          <button class="button button-clear" ng-click="showUpvotes()">
-            <i class="icon ion-heart assertive"></i>
 
-          </button>
-          {{message.createdAt}}
-          <p>{{message.attributes.text}}</p>
+        <div class="item-button-left item-text-wrap " >
+            <button class="button button-clear" ng-click="showUpvotes()">
+              <i class="icon ion-heart assertive"></i>
+            </button>
+            {{message.createdAt}}
+
+            <p class="paddingRight1">{{message.attributes.text}}</p>
 
 
-        <div class="row item-button-right">
-          <div class="col">Inspirational + {{message.attributes.categories.inspirational}}</div>
-          <div class="col">OMG + {{message.attributes.categories.omg}}</div>
-          <div class="col"><i class="icon ion-heart"></i> + {{message.attributes.categories.heart}}</div>
-          <div class="col">feel ya + {{message.attributes.categories.feel}}</div>
-          <div class="col">Congrats~!~ + {{message.attributes.categories.congrats}}</div>
-          <div class="col">LoL + {{message.attributes.categories.lol}}</div>
+          <div class="row item-button-right item-text-wrap">
+            <div class="col">Inspirational + {{message.attributes.categories.inspirational}}</div>
+            <div class="col">OMG + {{message.attributes.categories.omg}}</div>
+            <div class="col"><i class="icon ion-heart"></i> + {{message.attributes.categories.heart}}</div>
+            <div class="col">feel ya + {{message.attributes.categories.feel}}</div>
+            <div class="col">Congrats~!~ + {{message.attributes.categories.congrats}}</div>
+            <div class="col">LoL + {{message.attributes.categories.lol}}</div>
 
-          <button class="button button-clear" ng-click="showFavorite()">
-            <i class="icon ion-star energized"></i>
-          </button>
+            <button class="button button-clear" ng-click="showFavorite()">
+              <i class="icon ion-star energized"></i>
+            </button>
 
+          </div>
         </div>
 
-      </div>
+
 
 
 
@@ -74,6 +79,9 @@
     </div>
 
   </ion-content>
+
+
+
 </ion-view>
 
 <!--<script id="popup_template.html"-->

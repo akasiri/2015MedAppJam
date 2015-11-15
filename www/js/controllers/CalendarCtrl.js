@@ -39,7 +39,7 @@ main.controller('CalendarCtrl', ['$scope','$state','$ionicModal', 'userFactory',
       //  setButtonType : 'button-assertive',  //Optional
       //  todayButtonType : 'button-assertive',  //Optional
       //  closeButtonType : 'button-assertive',  //Optional
-      //  inputDate: new Date(),  //Optional
+       inputDate: new Date(),  //Optional
       //  mondayFirst: true,  //Optional
       //  disabledDates: disabledDates, //Optional
       //  weekDaysList: weekDaysList, //Optional
