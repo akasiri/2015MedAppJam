@@ -5,7 +5,7 @@
   <ion-content>
     <label class="item item-input item-stacked-label padding">
       <span class="input-label">Share your thoughts</span>
-      <textarea ng-model="share.text" class="textarea" ng-class="{'royal': slider.rangeValue==1, 'calm': slider.rangeValue==2, 'assertive': slider.rangeValue==3, 'energized': slider.rangeValue==4, 'balanced': slider.rangeValue==5, 'positive': slider.rangeValue==6}" rows = "4" placeholder = "How are you feeling today?"></textarea>
+      <textarea ng-model="share.text" class="textarea" ng-class="{'royal': slider.rangeValue==1, 'calm': slider.rangeValue==2, 'assertive': slider.rangeValue==3, 'energized': slider.rangeValue==4, 'balanced': slider.rangeValue==5, 'positive': slider.rangeValue==6}" rows = "4" placeholder = "Hi {{user.firstname}}! How are you feeling today?"></textarea>
     </label>
 
     <div class="row">
