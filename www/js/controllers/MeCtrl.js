@@ -13,7 +13,22 @@ main.controller('MeCtrl', ['$scope','$state', 'userFactory', function($scope, $s
   //  // console.log(result.data);
   //  $scope.posts = result.data;
   //});
-    $scope.posts = [
+
+  $scope.showShare = false;
+  $scope.showFav = true;
+
+  $scope.show_fav = function () {
+    $scope.showFav = true;
+    $scope.showShare = false;
+  };
+
+  $scope.show_share = function () {
+    $scope.showFav = false;
+    $scope.showShare = true;
+  };
+
+
+    $scope.myshare = [
       {
         title: 'lol',
         date: '28 Nov'
@@ -21,34 +36,56 @@ main.controller('MeCtrl', ['$scope','$state', 'userFactory', function($scope, $s
       {
         title: 'pop',
         date: '30 Oct'
-      },
-      {
-        title: 'hoho',
-        date: '1 Sep'
-      },
-      {
-        title: 'yolo',
-        date: '12 Sep'
       }
 
     ];
+
+
+  $scope.myfav = [
+    {
+      title: 'lol',
+      date: '28 Nov'
+    },
+    {
+      title: 'pop',
+      date: '30 Oct'
+    },
+    {
+      title: 'hoho',
+      date: '1 Sep'
+    },
+    {
+      title: 'yolo',
+      date: '12 Sep'
+    },
+
+    {
+      title: 'lol',
+      date: '28 Nov'
+    },
+    {
+      title: 'pop',
+      date: '30 Oct'
+    },
+    {
+      title: 'hoho',
+      date: '1 Sep'
+    },
+    {
+      title: 'yolo',
+      date: '12 Sep'
+    }
+
+  ];
+
+
+
 
 
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
   $scope.listCanSwipe = true
 
-
-  $scope.noMoreItemsAvailable = false;
-
-  $scope.loadMore = function() {
-    $scope.items.push({ id: $scope.items.length});
-
-    if ( $scope.items.length == posts.length ) {
-      $scope.noMoreItemsAvailable = true;
-    }
-    $scope.$broadcast('scroll.infiniteScrollComplete');
-  };
 
 
     var refresh = function() {
