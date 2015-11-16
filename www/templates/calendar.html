@@ -1,45 +1,43 @@
 
 <ion-view view-title="Calendar">
   <ion-nav-buttons side="right">
-    <a class="button button-clear icon ion-gear-b" ng-click="setting"></a>
+    <a class="button button-clear icon ion-gear-b" href="#/setting"></a>
   </ion-nav-buttons>
   <ion-content>
     <ionic-datepicker input-obj="datepickerObject">
-  <button   class="button button-positive"> {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}
+      <button   class="button button-positive">
+        {{datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}
+      </button>
+    </ionic-datepicker>
 
-  </button>
-</ionic-datepicker>
+
+    <div class="item item-divider item-text-wrap">
+      Goals from {{datepickerObject.inputDate| date:'dd - MMMM - yyyy'}}
+    </div>
+
+    <ion-list ng-repeat = "goal in myGoals">
+      <div class="item padding-left item-text-wrap">
+        {{goal}}
+      </div>
+    </ion-list>
 
 
-  <div class="item item-divider">
-  Goals from {{datepickerObject.inputDate| date:'dd - MMMM - yyyy'}}
-</div>
-<ion-list ng-repeat = "goal in myGoals">
-  <li class="item item-checkbox">
-    <label class="checkbox">
-      <input type="checkbox">
-    </label>
-    {{goal}}
-  </li>
-</ion-list>
+    <!--<div class="item item-divider item-text-wrap">-->
+      <!--Favorite Posts-->
+    <!--</div>-->
+    <!--<ion-list ng-repeat = "post in favPosts">-->
+      <!--<div class="item padding-left item-text-wrap">-->
+        <!--{{post}}-->
+      <!--</div>-->
+    <!--</ion-list>-->
 
-<div class="item item-divider">
-  Favorite Posts
-</div>
-<ion-list ng-repeat = "post in favPosts">
-  <li class="item item-text-wrap">
-    {{post}}
-  </li>
-</ion-list>
-
-<div class="item item-divider">
-  My Posts
-</div>
-<ion-list ng-repeat = "post in myPosts">
-  <li class="item item-text-wrap">
-
-    {{post}}
-  </li>
-</ion-list>
+    <div class="item item-divider item-text-wrap">
+      My Posts
+    </div>
+    <ion-list ng-repeat = "post in myPosts">
+      <div class="item padding-left item-text-wrap">
+        {{post}}
+      </div>
+    </ion-list>
   </ion-content>
 </ion-view>
