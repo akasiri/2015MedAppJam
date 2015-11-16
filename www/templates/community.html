@@ -1,6 +1,7 @@
 <a href="https://icons8.com">Icon pack by Icons8</a>
 
 
+
 <ion-view view-title="Community">
   <ion-nav-buttons side="right">
     <a class="button button-clear icon ion-gear-b" href="#/setting"></a>
@@ -8,7 +9,7 @@
   <ion-content>
     <label class="item item-input item-stacked-label padding">
       <span class="input-label">Share your thoughts</span>
-      <textarea ng-model="share.text" class="textarea" ng-class="{'royal': slider.rangeValue==1, 'calm': slider.rangeValue==2, 'assertive': slider.rangeValue==3, 'energized': slider.rangeValue==4, 'balanced': slider.rangeValue==5, 'positive': slider.rangeValue==6}" rows = "4" placeholder = "Hi {{user.firstname}}! How are you feeling today?"></textarea>
+      <textarea ng-model="share.text" class="textarea" ng-class="{'royal': slider.rangeValue==1, 'calm': slider.rangeValue==2, 'assertive': slider.rangeValue==3, 'energized': slider.rangeValue==4, 'balanced': slider.rangeValue==5, 'positive': slider.rangeValue==6}" rows = "3" placeholder = "Hi {{user.firstname}}! How are you feeling today?"></textarea>
     </label>
 
     <div class="row">
@@ -89,10 +90,7 @@
     </ion-refresher>
     <div class="list" ng-repeat="message in messages">
 
-        <div class="item-button-left item-text-wrap " >
-            <button class="button button-clear" ng-click="showUpvotes()">
-              <i class="icon ion-heart assertive"></i>
-            </button>
+        <div class="padding-left item-text-wrap " >
             {{timeAgo(message.createdAt)}}
 
             <p class="paddingRight1">{{message.attributes.text}}</p>
@@ -100,40 +98,34 @@
 
           <div class="row item-button-right">
             <div class="col">
-              <button class="button button-small button-royal" ng-click="clickedInspirational(message)">
+              <button class="button button-bar button-small button-royal" ng-click="clickedInspirational(message)">
                 inspire + {{message.attributes.categories.inspirational}}
               </button>
             </div>
             <div class="col">
-              <button class="button button-small button-calm" ng-click="clickedOmg(message)">
+              <button class="button button-bar button-small button-calm" ng-click="clickedOmg(message)">
                 OMG + {{message.attributes.categories.omg}}
               </button>
             </div>
             <div class="col">
-              <button class="button button-small button-assertive" ng-click="clickedHeart(message)">
+              <button class="button button-bar button-small button-assertive" ng-click="clickedHeart(message)">
                 <3 + {{message.attributes.categories.heart}}
               </button>
             </div>
-            <!--<div class="col royal">inspire + {{message.attributes.categories.inspirational}}</div>-->
-            <!--<div class="col calm">OMG + {{message.attributes.categories.omg}}</div>-->
-            <!--<div class="col assertive"><3 + {{message.attributes.categories.heart}}</div>-->
           </div>
           <div class="row item-button-right">
-            <!--<div class="col energized">feel ya + {{message.attributes.categories.feel}}</div>-->
-            <!--<div class="col balanced">grats!~ + {{message.attributes.categories.congrats}}</div>-->
-            <!--<div class="col positive">LOL + {{message.attributes.categories.lol}}</div>-->
             <div class="col">
-              <button class="button button-small button-energized" ng-click="clickedFeel(message)">
+              <button class="button button-bar button-small button-energized" ng-click="clickedFeel(message)">
                 feel ya + {{message.attributes.categories.feel}}
               </button>
             </div>
             <div class="col">
-              <button class="button button-small button-balanced" ng-click="clickedGrats(message)">
+              <button class="button button-bar button-small button-balanced" ng-click="clickedGrats(message)">
                 grats!~ + {{message.attributes.categories.congrats}}
               </button>
             </div>
             <div class="col">
-              <button class="button button-small button-positive" ng-click="clickedLol(message)">
+              <button class="button button-bar button-small button-positive" ng-click="clickedLol(message)">
                 LOL + {{message.attributes.categories.lol}}
               </button>
             </div>
@@ -159,8 +151,3 @@
 
 </ion-view>
 
-
-<!--<script id="popup_template.html"-->
-        <!--type="text/ng-template">-->
-        <!---->
-<!--</script>-->
