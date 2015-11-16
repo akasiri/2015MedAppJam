@@ -2,7 +2,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     userFactory.fetchcurrent();
     $scope.user = userFactory.getUser();
 
-    $scope.mood = 0;
+    $scope.mood = '';
     $scope.share = {text: ''};
 
     $scope.slider = {};
@@ -31,6 +31,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
         share.set("text", $scope.share.text);
         share.set("categories", {inspirational: 0, omg: 0, heart: 0, feel: 0, congrats: 0, lol: 0});
         share.set("createdBy", Parse.User.current());
+        share.set("mood", $scope.mood);
 
         share.save(null, {
           success: function(share) {
@@ -45,6 +46,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
         });
 
         $scope.share = {text: ''};
+        $scope.mood = '';
         $scope.doRefresh();
     };
 
@@ -160,6 +162,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
   $scope.doRefresh = function() {
     $scope.getShares();
     $scope.$broadcast('scroll.refreshComplete');
+    console.log($scope.mood);
   };
 
   $scope.getShares();
