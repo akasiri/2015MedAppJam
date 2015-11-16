@@ -1,4 +1,12 @@
 /*!
+line 2764 background color feffba
+line 2098 header color
+5820
+6465
+
+item color line 4661
+
+
  * Copyright 2014 Drifty Co.
  * http://drifty.com/
  *
@@ -2758,7 +2766,7 @@ ion-infinite-scroll:not(.active) .spinner, ion-infinite-scroll:not(.active) .ico
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: #feffba;
     overflow: hidden; }
 
 .view-container {
@@ -3062,7 +3070,7 @@ a.subdued:last-child {
     background: none;
     color: #fff; }
 .bar.bar-clear .button {
-    color: #fff; }
+    color:#fff; }
 .bar.bar-clear .title {
     color: #fff; }
 .bar.item-input-inset .item-input-wrapper {
@@ -3091,8 +3099,8 @@ a.subdued:last-child {
 .bar.bar-stable.bar-footer {
     background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%); }
 .bar.bar-positive {
-    border-color: #0c63ee;
-    background-color: #387ef5;
+    border-color: #fff;
+    background-color: #ffc558;
     background-image: linear-gradient(0deg, #0c63ee, #0c63ee 50%, transparent 50%);
     color: #fff; }
 .bar.bar-positive .title {
@@ -3539,7 +3547,7 @@ a.subdued:last-child {
     border-color: #b2b2b2;
     background-color: #f8f8f8;
     background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
-    color: #444; }
+    color: #fff; }
 .tabs-stable > .tabs .tab-item .badge, .tabs.tabs-stable .tab-item .badge {
     background-color: #444;
     color: #f8f8f8; }
@@ -4056,7 +4064,7 @@ ion-tabs.tabs-color-active-stable .tab-item.tab-item-active, ion-tabs.tabs-color
 ion-tabs.tabs-color-active-positive .tab-item {
     color: #444; }
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
-    color: #387ef5; }
+    color: #ffa700; }
 ion-tabs.tabs-color-active-calm .tab-item {
     color: #444; }
 ion-tabs.tabs-color-active-calm .tab-item.tab-item-active, ion-tabs.tabs-color-active-calm .tab-item.active, ion-tabs.tabs-color-active-calm .tab-item.activated {
@@ -4653,7 +4661,7 @@ ion-tabs.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs.tabs-color-a
  */
 .item {
     border-color: #ddd;
-    background-color: #fff;
+    background-color: #feffba;
     color: #444;
     position: relative;
     z-index: 2;
@@ -4799,7 +4807,7 @@ a.item:hover, a.item:focus {
     z-index: 2;
     padding: 16px 49px 16px 16px;
     border: none;
-    background-color: #fff; }
+    background-color: #feffba; }
 
 a.item-content {
     display: block;
@@ -5096,7 +5104,7 @@ a.item-content {
     padding-top: 8px;
     padding-bottom: 8px;
     min-height: 30px;
-    background-color: #f5f5f5;
+    background-color: #ffed7c;
     color: #222;
     font-weight: 500; }
 
@@ -5814,7 +5822,7 @@ input, button, select, textarea {
     border-radius: 2px;
     padding: 4px 8px 3px 0;
     border: none;
-    background-color: #fff; }
+    background-color: #feffba; }
 
 .item-stacked-label input {
     overflow: hidden;
@@ -6457,7 +6465,7 @@ input[type="radio"][disabled], input[type="checkbox"][disabled], input[type="rad
     padding: 0 48px 0 16px;
     max-width: 65%;
     border: none;
-    background: #fff;
+    background: #feffba;
     color: #333;
     text-indent: 0.01px;
     text-overflow: '';
@@ -6651,21 +6659,21 @@ progress {
     box-shadow: none;
     color: #fff; }
 .button.button-positive {
-    border-color: #0c63ee;
-    background-color: #387ef5;
+    border-color: #b2b2b2;
+    background-color: #ffc558;
     color: #fff; }
 .button.button-positive:hover {
     color: #fff;
     text-decoration: none; }
 .button.button-positive.active, .button.button-positive.activated {
     border-color: #0c63ee;
-    background-color: #0c63ee;
+    background-color: #ff9a00;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
 .button.button-positive.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    color: #387ef5; }
+    color: #40a7b6; }
 .button.button-positive.button-icon {
     border-color: transparent;
     background: none; }
