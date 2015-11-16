@@ -1,6 +1,6 @@
 <ion-view view-title="Goals">
 
-  <ion-nav-buttons side="left">
+  <ion-nav-buttons side="left" ng-show="!showAdd">
     <a class="button button-clear icon ion-compose" ng-click="toggleShowAdd()"></a>
   </ion-nav-buttons>
 
@@ -28,9 +28,9 @@
     <div class="list" ng-show="showAdd">
       <div class="item item-input-inset">
         <label class="item-input-wrapper">
-          <input type="text" placeholder="Enter a goal" ng-model="newGoal.text">
+          <input type="text" placeholder="Enter a goal" ng-model="newGoal">
         </label>
-        <button class="button button-positive" ng-click="add()">
+        <button class="button button-positive" ng-click="add(newGoal)">
           Submit
         </button>
       </div>
@@ -53,8 +53,8 @@
     </div>
 
     <ion-list>
-      <ion-item ng-repeat="goal in goals">
-        <input type="checkbox" ng-click="toggleComplete(goal)" ng-model=goal.attributes.isComplete>
+      <ion-item class="item-text-wrap" ng-repeat="goal in goals">
+        <input  type="checkbox" ng-click="toggleComplete(goal)" ng-model=goal.attributes.isComplete>
         {{ goal.attributes.text }}
         <ion-option-button class="button-assertive button-remove" ng-click="remove(goal)">Remove</ion-option-button>
       </ion-item>

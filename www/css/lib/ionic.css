@@ -6763,12 +6763,12 @@ progress {
     background: transparent;
     color: #33cd5f; }
 .button.button-balanced.button-outline.active, .button.button-balanced.button-outline.activated {
-    background-color: #33cd5f;
+    background-color: #9eea78;
     box-shadow: none;
     color: #fff; }
 .button.button-energized {
     border-color: #e6b400;
-    background-color: #ffc900;
+    background-color: #ee84e9;
     color: #fff; }
 .button.button-energized:hover {
     color: #fff;
