@@ -5,14 +5,14 @@ main.controller('MeCtrl', ['$scope','$state', 'userFactory', function($scope, $s
         $state.go('setting');
     };
 
-    $scope.edit_profile = function() {
-        $state.go('edit_profile', {}, {reload: true});
-    };
-
+  userFactory.fetchcurrent();
+  $scope.user = userFactory.getUser();
   //$http.get("http://jsonplaceholder.typicode.com/posts/").then(function(result){
   //  // console.log(result.data);
   //  $scope.posts = result.data;
   //});
+    $scope.myShares = [];
+
     $scope.posts = [
       {
         title: 'lol',
@@ -50,7 +50,23 @@ main.controller('MeCtrl', ['$scope','$state', 'userFactory', function($scope, $s
     $scope.$broadcast('scroll.infiniteScrollComplete');
   };
 
+  $scope.formatDate = function(date) {
+    return moment(date).format('MMMM Do YYYY');
+  };
 
+  $scope.getMyShares = function() {
+      var query = new Parse.Query("Share");
+      query.equalTo("createdBy", Parse.User.current());
+      query.find({
+        success: function(results) {
+          console.log($scope.myShares);
+          $scope.myShares = results;
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+  };
     var refresh = function() {
         //console.log(Parse.User.current());
         userFactory.fetchcurrent();
@@ -60,4 +76,6 @@ main.controller('MeCtrl', ['$scope','$state', 'userFactory', function($scope, $s
         //console.log("refresh", $scope.user);
     };
     refresh();
+
+    $scope.getMyShares();
 }]);

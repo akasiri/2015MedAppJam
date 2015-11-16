@@ -49,18 +49,18 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
         share.set("createdBy", Parse.User.current());
 
         share.save(null, {
-          success: function(gameScore) {
+          success: function(share) {
             // Execute any logic that should take place after the object is saved.
             alert('New object created with objectId: ' + share.id);
           },
-          error: function(gameScore, error) {
+          error: function(share, error) {
             // Execute any logic that should take place if the save fails.
             // error is a Parse.Error with an error code and message.
             alert('Failed to create new object, with error code: ' + error.message);
           }
         });
 
-        $('input[type="text"], textarea').val('');
+        $scope.share = {text: ''};
         $scope.doRefresh();
     };
 
@@ -137,7 +137,13 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     });
   };
 
+  $scope.upVoteInspirational = function(message) {
 
+    // now let’s associate the authors with the book
+    // remember, we created a "authors" relation on Book
+      var relation = message.attributes.categories.inspirational.relation("upvotedBy");
+      relation.add(Parse.User.current());
+  };
 
 // Triggered on a button click, or some other target
   $scope.showUpvotes = function() {
@@ -229,7 +235,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
   $scope.doRefresh = function() {
     $scope.getShares();
     $scope.$broadcast('scroll.refreshComplete');
-  }
+  };
 
   $scope.getShares();
 }]);
