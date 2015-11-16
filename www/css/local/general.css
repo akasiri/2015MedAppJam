@@ -10,6 +10,7 @@
   bottom: 0;
   overflow: hidden;
   position: relative;
+  background-color: #ffffdc;
 }
 
 .popup1 .popup{
@@ -33,5 +34,3 @@
   border-radius: 8px !important;
   background-color: #fff;
 }
-
-
