@@ -17,15 +17,24 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
 
   $scope.showShare = false;
   $scope.showFav = true;
+  $scope.showGoals = false;
 
   $scope.show_fav = function (){
     $scope.showFav = true;
     $scope.showShare = false;
+    $scope.showGoals = false;
   };
 
   $scope.show_share = function () {
     $scope.showFav = false;
     $scope.showShare = true;
+    $scope.showGoals = false;
+  };
+
+  $scope.show_goals = function () {
+    $scope.showFav = false;
+    $scope.showShare = false;
+    $scope.showGoals = true;
   };
 
   console.log(Parse.User.current().get("favorites"));
@@ -33,7 +42,7 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
 
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
-  $scope.listCanSwipe = true
+  $scope.listCanSwipe = true;
 
 
   $scope.noMoreItemsAvailable = false;
