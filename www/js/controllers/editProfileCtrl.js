@@ -117,7 +117,7 @@ main.controller('editProfileCtrl', ['$scope','$state', 'userFactory','$ionicPopu
     var alertSuccess = function() {
         var alertPopup = $ionicPopup.alert({
             title: 'Success',
-            template: 'You have successfully updated your information!'
+            subTitle: 'You have successfully updated your information!'
         }).then(function(){
             $state.go("tabs.me");
         });
@@ -125,7 +125,7 @@ main.controller('editProfileCtrl', ['$scope','$state', 'userFactory','$ionicPopu
     var alertError = function() {
         var alertPopup = $ionicPopup.alert({
             title: 'Error',
-            template: 'Something went wrong'
+            subTitle: 'Something went wrong'
         });
     };
 

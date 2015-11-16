@@ -56,7 +56,7 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
   $scope.delete_fav = function(post) {
     var confirmPopup = $ionicPopup.confirm({
       title: 'Delete',
-      template: 'Do you want to delete from my favorites?'
+      subTitle: 'Do you want to delete from my favorites?'
     });
     confirmPopup.then(function(res) {
       // TODO: delete the post
@@ -95,7 +95,7 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
     console.log('delete share');
     var confirmPopup = $ionicPopup.confirm({
       title: 'Delete',
-      template: 'Do you want to delete from my shares?'
+      subTitle: 'Do you want to delete from my shares?'
     });
     confirmPopup.then(function(res) {
       // TODO: delete the post
