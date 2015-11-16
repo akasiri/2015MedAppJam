@@ -16,8 +16,8 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
   $scope.myGoals = [];
   console.log($scope.myShares);
 
-  $scope.showShare = false;
-  $scope.showFav = true;
+  $scope.showShare = true;
+  $scope.showFav = false;
   $scope.showGoals = false;
 
   $scope.show_fav = function (){
