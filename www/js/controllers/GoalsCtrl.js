@@ -10,21 +10,21 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
      */
 
     // goals is now an array of database entries (I think)
-    $scope.goals = [
-        // {text:"Do stuff",
-        //     complete:false},
-        // {text:"Pet dogs",
-        //     complete:false},
-        // {text:"Pet cats",
-        //     complete:false},
-    ];
+    $scope.goals = [];
     $scope.newGoal = "";
     $scope.showAdd = false;
 
-// archive button and section
+// display goals on open
 // input box size
 // input box reset value after submission
 // list entry size
+// archive button and section
+
+    $scope.initGoals = function() {
+        console.log("just got to initGoals()");
+        $scope.doRefresh();
+//        $state.go($state.current, {}, {reload: true});
+    }
 
     var checkIfGoalExists = function(goal, list) {
         var listLen = list.length;
@@ -35,7 +35,6 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
         }
         return false;
     };
-
 
     $scope.toggleShowAdd = function () {
         $scope.showAdd = !$scope.showAdd;
@@ -218,5 +217,4 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
         $scope.getGoals();
         $scope.$broadcast('scroll.refreshComplete');
     }
-
 }]);
