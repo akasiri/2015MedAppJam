@@ -9,17 +9,22 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
      * NOTIFICATIONS/ IONIC POP UP
      */
 
+    // goals is now an array of database entries (I think)
     $scope.goals = [
-        {text:"Do stuff",
-            complete:false},
-        {text:"Pet dogs",
-            complete:false},
-        {text:"Pet cats",
-            complete:false},
+        // {text:"Do stuff",
+        //     complete:false},
+        // {text:"Pet dogs",
+        //     complete:false},
+        // {text:"Pet cats",
+        //     complete:false},
     ];
     $scope.newGoal = "";
     $scope.showAdd = false;
 
+// archive button and section
+// input box size
+// input box reset value after submission
+// list entry size
 
     var checkIfGoalExists = function(goal, list) {
         var listLen = list.length;
@@ -36,24 +41,92 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
         $scope.showAdd = !$scope.showAdd;
     };
 
+    $scope.getGoals = function () {
+        var Goal = Parse.Object.extend("UserGoals");
+        var query = new Parse.Query(Goal);
+
+        query.equalTo("active", true);
+        query.equalTo("createdBy", Parse.User.current());
+
+        query.ascending("createdAt");
+        query.find({
+            success: function(results) {
+                for (var i = 0; i < results.length; i++) {
+                    $scope.goals[i] = results[i];
+                };
+                console.log("goals: ")
+                console.log($scope.goals);
+            },
+            error: function(error) {
+                alert("Error " + error.code + " " + error.message);
+            }
+        })
+    };
+
     $scope.remove = function(goal) {
+        goal.destroy( {success: function(myObject) {
+            // The object was deleted from the Parse Cloud.
+            console.log('Object destroyed with objectId: ' + goal.id);
+          },
+          error: function(myObject, error) {
+            // The delete failed.
+            // error is a Parse.Error with an error code and message.
+            console.log('Failed to destroy object, with error code: ' + error.message);
+          }
+        });
+
         $scope.goals.splice($scope.goals.indexOf(goal), 1);
+//        $scope.doRefresh();
     };
 
     $scope.add = function(newGoal) {
-        if (!checkIfGoalExists(newGoal, $scope.goals) && (newGoal != "")) {
-            $scope.goals.push({text:newGoal,complete:false});
+        // if (!checkIfGoalExists(newGoal, $scope.goals)) {
+            if (newGoal != "") {
+
+            var Goal = Parse.Object.extend("UserGoals");
+            var goal = new Goal();
+            goal.set("text", newGoal);
+            goal.set("createdBy", Parse.User.current());
+            goal.set("active", true);
+            goal.set("isComplete", false);
+
+            goal.save(null, {
+                success: function(goal) {
+                    // Execute any logic that should take place after the object is saved.
+                    console.log('New object created with objectId: ' + goal.id);
+                },
+                error: function(goal, error) {
+                    // Execute any logic that should take place if the save fails.
+                    // error is a Parse.Error with an error code and message.
+                    console.log('Failed to create new object, with error code: ' + error.message);
+                }
+            })
+
+            $scope.goals[$scope.goals.length] = goal;
+//            $scope.doRefresh();
+
             $scope.showAdd = false;
-        }
-        else {
-            var alertPopup = $ionicPopup.alert({
-              title: 'Don\'t eat that!',
-              template: 'Cannot add to the list'
-            });
-            alertPopup.then(function(res) {
-                // pass
-            });
-        }
+
+            }
+            else {
+                var alertPopup = $ionicPopup.alert({
+                  title: 'Uh oh',
+                  template: 'No empty goal please'
+                });
+                alertPopup.then(function(res) {
+                    // pass
+                });
+            }
+        // }
+        // else {
+        //     var alertPopup = $ionicPopup.alert({
+        //       title: 'Cannot add to the list',
+        //       template: 'Already in list'
+        //     });
+        //     alertPopup.then(function(res) {
+        //         // pass
+        //     });
+        // }
     };
 
     $scope.toggleComplete = function(goal) {
@@ -140,5 +213,10 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
         });
     };
 
+
+    $scope.doRefresh = function() {
+        $scope.getGoals();
+        $scope.$broadcast('scroll.refreshComplete');
+    }
 
 }]);
