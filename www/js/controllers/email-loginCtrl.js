@@ -61,14 +61,14 @@ main.controller('email-loginCtrl', function($scope,$state,$ionicPopup,userFactor
     var alertError = function() {
         var alertPopup = $ionicPopup.alert({
             title: 'Error!',
-            template: 'Incorrect Password or Username'
+            subTitle: 'Incorrect Password or Username'
         });
         $scope.data.password = "";
     };
     var alertSuccess = function() {
         var alertPopup = $ionicPopup.alert({
             title: 'Success!',
-            template: 'Log in successful'
+            subTitle: 'Log in successful'
         });
         alertPopup.then(function(res) {
             $state.go('tabs.community');
@@ -85,7 +85,7 @@ main.controller('email-loginCtrl', function($scope,$state,$ionicPopup,userFactor
     var alertInvalidPw = function() {
         var alertPopup = $ionicPopup.alert({
             title: 'Error!',
-            template: 'Password must be at least 8 characters long'
+            subTitle: 'Password must be at least 8 characters long'
         });
     };
 });
