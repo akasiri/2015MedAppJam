@@ -11,6 +11,7 @@ main.controller('settingCtrl', ['$scope','$state', '$ionicPopup', 'userFactory',
         if (userFactory.isLoggedIn()) {
             //console.log("logging out", $scope.user.id);
             Parse.User.logOut($scope.user.id);
+            window.location.reload();
         }
         else {
             //console.log("No User logged in");
