@@ -1,23 +1,9 @@
 main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory','$ionicLoading','$ionicPopup', function($scope, $state, $ionicModal, userFactory, $ionicLoading,$ionicPopup) {
-    //$ionicLoading.show({
-    //    //this function is used before the page is loaded to create a spinner
-    //    content: 'Loading',
-    //    animation: 'fade-in',
-    //    showBackdrop: true,
-    //    maxWidth: 200,
-    //    showDelay: 0
-    //});
     userFactory.fetchcurrent();
     $scope.user = userFactory.getUser();
 
     $scope.mood = 0;
     $scope.share = {text: ''};
-
-    //$scope.people = [{name:'Johnathan Tran', color: "green"} ];
-    //$scope.messages = [{msgid:0, sender:'Johnathan Tran', message:'Got gold in league!', date:'11/12/2015'},
-    //  {msgid:1, sender:'Arzang Kasiri', message:"I'll paint my body when we get over $800 donations.", date:'11/13/2015'}
-    //];
-
 
     $scope.slider = {};
     $scope.slider.rangeValue = 0;
@@ -27,7 +13,6 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
       console.log('range=' + $scope.slider.rangeValue)
 
     });
-
 
 
     $scope.messages = [];
@@ -162,78 +147,6 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
   $scope.clickedLol = function(message) {
       message.attributes.categories.lol++;
       message.save();
-  };
-
-
-// Triggered on a button click, or some other target
-  $scope.showUpvotes = function() {
-    $scope.data = {}
-
-    // An elaborate, custom popup
-    var myPopup = $ionicPopup.show({
-      template: '',
-      cssClass:'popup1',
-      title: 'Choose one or more:',
-      subTitle: '',
-      scope: $scope,
-      buttons: [
-        { text: 'InspirE',
-        type: 'button button-royal button-small',
-        //onTap: function(i) {
-        //  //code
-        //}
-        },
-        { text: 'OMG',
-          type: 'button-calm button-small',
-          //onTap: function(o) {
-          //  //code
-          //}
-        },
-        { text: '<3',
-          type: 'button-assertive button-small',
-          //onTap: function(h) {
-          //  //code
-          //}
-        },
-        { text: 'feel ya',
-          type: 'button-energized button-small',
-          //onTap: function(f) {
-          //  //code
-          //}
-        },
-        { text: 'grats!',
-          type: 'button-balanced button-small',
-          //onTap: function(c) {
-          //  //code
-          //}
-        },
-        {
-          text: 'LoL',
-          type: 'button-positive button-small',
-          //onTap: function(l) {
-          //  //code
-          //}
-        }
-        //bottom line code is how to do things supposedly?
-        //},
-        //{
-        //  text: '<b>Save</b>',
-        //  type: 'button-positive',
-        //  //on top stuff
-        //  onTap: function(e) {
-        //    if (!$scope.data.wifi) {
-        //      //don't allow the user to close unless he enters wifi password
-        //      e.preventDefault();
-        //    } else {
-        //      return $scope.data.wifi;
-        //    }
-        //  }
-        //}
-      ]
-    });
-    myPopup.then(function(res) {
-      console.log('Tapped!', res);
-    });
   };
 
 
