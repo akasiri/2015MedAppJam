@@ -1,56 +1,66 @@
 <ion-view view-title="Goals">
 
-    <ion-nav-buttons side="left" ng-show="!showAdd">
-        <a class="button button-clear icon ion-compose" ng-click="toggleShowAdd()"></a>
-    </ion-nav-buttons>
+  <ion-nav-buttons side="left" ng-show="!showAdd">
+    <a class="button button-clear icon ion-compose" ng-click="toggleShowAdd()"></a>
+  </ion-nav-buttons>
 
-    <ion-nav-buttons side="right">
-        <a class="button button-clear icon ion-gear-b" href="#/setting" ng-click="setting"></a>
-    </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <a class="button button-clear icon ion-gear-b" href="#/setting" ng-click="setting"></a>
+  </ion-nav-buttons>
 
-    <!-- <ion-content>
+  <!-- <ion-content>
 
-        <ion-checkbox ng-repreat="goal in goals" ng-model="goals;goal.complete" ng-checked="goal.complete">
-            {{goal.text}}
-            <ion-option-button class="button-assertive" style="bg=red" ng-click="remove(goal)">Remove</ion-option-button>
-        </ion-checkbox>
+      <ion-checkbox ng-repreat="goal in goals" ng-model="goals;goal.complete" ng-checked="goal.complete">
+          {{goal.text}}
+          <ion-option-button class="button-assertive" style="bg=red" ng-click="remove(goal)">Remove</ion-option-button>
+      </ion-checkbox>
 
-        <form ng-submit="add(newGoal)">
-            <input type="text" placeholder="Enter a goal" ng-model="newGoal" style="float:left;"/>
-            <button class="button button-balanced" type="submit" style="float:right;">Submit</button>
-        </form>
+      <form ng-submit="add(newGoal)">
+          <input type="text" placeholder="Enter a goal" ng-model="newGoal" style="float:left;"/>
+          <button class="button button-balanced" type="submit" style="float:right;">Submit</button>
+      </form>
 
-    </ion-content> -->
+  </ion-content> -->
 
-    <ion-content>
-        <ion-refresher
-          pulling-text="Pull to refresh..."
-          on-refresh="doRefresh()">
-        </ion-refresher>
+  <ion-content>
 
-        <div class="list" ng-show="showAdd">
-          <div class="item item-input-inset">
-            <!-- <label class="">
-              <input type="text" />
-            </label> -->
-            <label class="button-block">
-                <textarea placeholder="Enter a goal" ng-model="newGoal"></textarea>
-            </label>
-                <button class="button button-balanced" ng-click="add(newGoal)">Submit</button>
-            </button>
-          </div>
 
-        </div>
+    <div class="list" ng-show="showAdd">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Enter a goal" ng-model="newGoal">
+        </label>
+        <button class="button button-positive" ng-click="add(newGoal)">
+          Submit
+        </button>
+      </div>
+      <!-- <div class="row row-center ">
+      <div class=" col col-80 ">
+      <label class="item item-input item-stacked-label ">
 
-        <ion-list>
-            <ion-item ng-repeat="goal in goals">
-                <input type="checkbox" ng-click="toggleComplete(goal)" ng-model=goal.attributes.isComplete>
-                {{ goal.attributes.text }}
-                <ion-option-button class="button-assertive button-remove" ng-click="remove(goal)">Remove</ion-option-button>
-            </ion-item>
-        </ion-list>
+        <div class="col">
+        <label class="button-positive">
+            <textarea placeholder="Enter a goal" ng-model="newGoal"></textarea>
+        </label>
+      </div>
+      </div>
 
-        <!-- {{goals}} -->
+            <button class="button button-block button-positive" ng-click="add(newGoal)">Submit</button>
+        </button>
+      </div> -->
+    </div>
 
-    </ion-content>
+    </div>
+
+    <ion-list>
+      <ion-item ng-repeat="goal in goals">
+        <input type="checkbox" ng-click="toggleComplete(goal)" ng-model=goal.attributes.isComplete>
+        {{ goal.attributes.text }}
+        <ion-option-button class="button-assertive button-remove" ng-click="remove(goal)">Remove</ion-option-button>
+      </ion-item>
+    </ion-list>
+
+    <!-- {{goals}} -->
+
+  </ion-content>
 </ion-view>

@@ -8,25 +8,34 @@
         <!--Settings-->
       <!--</div>-->
 
-      <a class="item item-icon-left item-icon-right" href="#">
+      <a class=" item-divider item item-icon-left item-icon-right" href="#">
         <i class="icon ion-ios-person-outline"></i>
         <div  ng-click="backToProfile()">About Me </div>
         <i class="icon ion-ios-arrow-down"></i>
       </a>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label ">About Me (Optional)</span>
+        <textarea  class="textarea item-body" style="font-size: 9pt" rows = "4" placeholder = "I need to get Gold ranking on League." ng-model="user.about"></textarea>
+      </label>
 
-      <a class="item item-icon-left item-icon-right" href="#">
+      <a class="item-divider item item-icon-left item-icon-right" href="#">
         <i class="icon ion-ios-locked-outline"></i>
         <div  ng-click="changepassword()">Change Password</div>
         <i class="icon ion-ios-arrow-down"></i>
-      </a>
 
-      <a class="item item-icon-left item-icon-right" href="#">
+      </a>
+      <label class = "item item-input item-stacked-label ">
+        <span class="input-label"> Password </span>
+        <input type="Password" placeholder="password123" ng-model="user.password">
+      </label>
+
+      <a class="item-divider item item-icon-left item-icon-right" href="#">
         <i class="icon ion-ios-paper-outline"></i>
         <div  ng-click="addnotepad()">Edit notepad</div>
-        <i class="icon ion-ios-arrow-down"></i>
+        <i class="icon ion-ios-arrow-right"></i>
       </a>
 
-      <a class="item item-icon-left item-icon-right" href="#">
+      <a class="item-divider item item-icon-left item-icon-right" href="#">
         <i class="icon ion-ios-minus-outline"></i>
         <div  ng-click="logout()">Log Out</div>
 
