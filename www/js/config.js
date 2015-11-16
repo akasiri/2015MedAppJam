@@ -98,6 +98,7 @@ main.config(['$stateProvider','$urlRouterProvider','$urlMatcherFactoryProvider',
         }
     };
 
+
     //$urlRouterProvider.when($urlMatcherFactoryProvider.compile("/signup"), function($state) {
     //    $state.go('signup');
     //});

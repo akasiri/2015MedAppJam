@@ -137,13 +137,38 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     });
   };
 
-  $scope.upVoteInspirational = function(message) {
+  //buttons on the bottom of posts
+  $scope.clickedInspirational = function() {
+    var relation = message.attributes.categories.inspirational.relation("upvotedBy");
+    relation.add(Parse.User.current());
+  }
+  $scope.clickedOmg = function() {
 
-    // now let’s associate the authors with the book
-    // remember, we created a "authors" relation on Book
-      var relation = message.attributes.categories.inspirational.relation("upvotedBy");
-      relation.add(Parse.User.current());
-  };
+  }
+  $scope.clickedHeart = function() {
+
+  }
+  $scope.clickedFeel = function() {
+
+  }
+  $scope.clickedGrats = function() {
+
+  }
+  $scope.clickedLol = function() {
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> d0316f0cf73329c229a20910fcc1414e0aefaf85
 
 // Triggered on a button click, or some other target
   $scope.showUpvotes = function() {
@@ -216,21 +241,6 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     });
   };
 
-  ////refresh function
-  //angular.module('testApp', ['ionic'])
-  //  .controller('MyController', function($scope, $http) {
-  //    $scope.items = [1,2,3];
-  //    $scope.doRefresh = function() {
-  //      $http.get('/new-items')
-  //        .success(function(newItems) {
-  //          $scope.items = newItems;
-  //        })
-  //        .finally(function() {
-  //          // Stop the ion-refresher from spinning
-  //          $scope.$broadcast('scroll.refreshComplete');
-  //        });
-  //    };
-  //  });
 
   $scope.doRefresh = function() {
     $scope.getShares();
