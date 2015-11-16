@@ -1,4 +1,4 @@
-main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 'userFactory', function ($scope, $state, $ionicModal, $ionicPopup, algolia, userFactory) {
+main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 'userFactory', function ($scope, $state, $ionicModal, $ionicPopup, userFactory) {
 
 
     //Load the user from factory.
@@ -10,7 +10,7 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
      */
 
     // goals is now an array of database entries (I think)
-    $scope.goals = [];
+    $scope.goals = userFactory.allMyGoals();
     $scope.newGoal = "";
     $scope.showAdd = false;
 
@@ -216,5 +216,5 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
     $scope.doRefresh = function() {
         $scope.getGoals();
         $scope.$broadcast('scroll.refreshComplete');
-    }
+    };
 }]);

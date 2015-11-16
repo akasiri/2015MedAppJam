@@ -22,7 +22,7 @@
 
     </ion-content> -->
 
-    <ion-content ng-start="getGoals()">
+    <ion-content>
         <ion-refresher
           pulling-text="Pull to refresh..."
           on-refresh="doRefresh()">
@@ -43,7 +43,7 @@
         </div>
 
         <ion-list>
-            <ion-item ng-repeat="goal in User.goals">
+            <ion-item ng-repeat="goal in goals">
                 <input type="checkbox" ng-click="toggleComplete(goal)" ng-model=goal.attributes.isComplete>
                 {{ goal.attributes.text }}
                 <ion-option-button class="button-assertive button-remove" ng-click="remove(goal)">Remove</ion-option-button>

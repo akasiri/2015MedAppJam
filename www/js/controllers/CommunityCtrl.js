@@ -14,8 +14,10 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
 
     });
 
-
-    $scope.messages = [];
+    console.log(userFactory.allMyGoals());
+    console.log(userFactory.allMyShares());
+    $scope.messages = userFactory.allShares();
+    console.log($scope.messages);
     //inspirational omg heart feelya congrats lol
     $scope.msgUpvotes =[{uid:0, i:1, o:3, h:3, f:7, c:6, l:2},
       {uid:1, i:0, o:0, h:0, f:0, c:0, l:0}
@@ -155,5 +157,4 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     $scope.$broadcast('scroll.refreshComplete');
   };
 
-  $scope.getShares();
 }]);

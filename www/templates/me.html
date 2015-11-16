@@ -11,7 +11,7 @@
     <div class="button-bar padding">
 
       <a class="button button-positive button-outline" ng-class="{'active': showFav}" ng-click = "show_fav()"  >
-        <p>My favorites</p>
+        <p>My Favorites</p>
       </a>
       <a class="button button-positive button-outline" ng-class="{'active': showShare}" ng-click = "show_share()" >
         <p>My Shares</p>
@@ -81,16 +81,41 @@
                 show-delete="shouldShowDelete"
                 show-reorder="shouldShowReorder"
                 can-swipe="listCanSwipe">
-        <ion-item ng-repeat= "post in myshare" post = "post" >
+        <ion-item ng-repeat= "message in myShares" post = "post" >
           <!--<div class="item item-body">-->
-          <h2>{{post.title}}</h2>
-          <h4>date</h4>
-          <label>
-            <a href="#" class="subdued">1 understanding</a>
-            <a href="#" class="subdued">5 OMG</a>
-          </label>
+          <h4>{{formatDate(message.createdAt)}}</h4>
+          <h2>{{message.attributes.text}}</h2>
+          <!--<label>-->
+            <!--<a class="subdued royal">inspire +{{share.attributes.categories.inspirational}}</a>-->
+            <!--<a class="subdued calm">OMG +{{share.attributes.categories.omg}}</a>-->
+            <!--<a class="subdued assertive"><3 +{{share.attributes.categories.heart}}</a>-->
+            <!--<a class="subdued energized">feel ya +{{share.attributes.categories.feel}}</a>-->
+            <!--<a class="subdued balanced">grats!~ +{{share.attributes.categories.congrats}}</a>-->
+            <!--<a class="subdued positive">LOL +{{share.attributes.categories.lol}}</a>-->
+          <!--</label>-->
+          <div class="row">
+            <div class="col">
+              <a class="subdued royal">inspire +{{message.attributes.categories.inspirational}}</a>
+            </div>
+            <div class="col col-offset-20">
+              <a class="subdued calm">OMG +{{message.attributes.categories.omg}} </a>
+            </div>
+            <div class="col col-offset-20">
+              <a class="subdued assertive"><3 +{{message.attributes.categories.heart}} </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="subdued energized">feel ya +{{message.attributes.categories.feel}} </a>
+            </div>
+            <div class="col col-offset-20">
+              <a class="subdued balanced">grats!~ +{{message.attributes.categories.congrats}} </a>
+            </div>
+            <div class="col col-offset-20">
+              <a class="subdued positive">LOL +{{message.attributes.categories.lol}} </a>
+            </div>
 
-          <ion-option-button class="button button-positive" ng-click="delete_share(post)">
+          <ion-option-button class="button button-positive" ng-click="delete_share(message)">
             Delete
           </ion-option-button>
           <!--</div>-->

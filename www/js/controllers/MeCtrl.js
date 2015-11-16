@@ -11,10 +11,8 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
   //  // console.log(result.data);
   //  $scope.posts = result.data;
   //});
-  $scope.myShares = [];
-
-
-
+  $scope.myShares = userFactory.allMyShares();
+  console.log($scope.myShares);
 
   $scope.showShare = false;
   $scope.showFav = true;
@@ -102,7 +100,7 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
     });
   };
 
-  $scope.delete_share = function(post) {
+  $scope.delete_share = function(message) {
     console.log('delete share');
     var confirmPopup = $ionicPopup.confirm({
       title: 'Delete',
@@ -111,7 +109,16 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
     confirmPopup.then(function(res) {
       // TODO: delete the post
       if (res) {
-        $scope.myshare.splice($scope.myshare.indexOf(post), 1);
+        message.destroy({
+          success: function(myObject) {
+            $scope.myShares.splice($scope.myShares.indexOf(message),1);
+            $scope.goals.splice($scope.goals.indexOf(goal), 1);
+          },
+          error: function(myObject, error) {
+            // The delete failed.
+            // error is a Parse.Error with an error code and message.
+          }
+        });
       }
     });
 
@@ -122,7 +129,7 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
 
   $scope.doRefresh = function() {
     //TODO: get new favorite posts and shares
-
+    $scope.getMyShares();
     $scope.$broadcast('scroll.refreshComplete');
   }
 
@@ -143,5 +150,5 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
   };
   refresh();
 
-  $scope.getMyShares();
+
 }]);
