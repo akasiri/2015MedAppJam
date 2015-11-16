@@ -10,6 +10,9 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
      */
 
     // goals is now an array of database entries (I think)
+    console.log(userFactory.allShares());
+    console.log(userFactory.allMyGoals());
+    console.log(userFactory.allMyShares());
     $scope.goals = userFactory.allMyGoals();
     $scope.newGoal = "";
     $scope.showAdd = false;
@@ -217,4 +220,5 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
         $scope.getGoals();
         $scope.$broadcast('scroll.refreshComplete');
     };
+    $scope.getGoals();
 }]);

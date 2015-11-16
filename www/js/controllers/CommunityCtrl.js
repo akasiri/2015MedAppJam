@@ -14,14 +14,11 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
 
     });
 
+    console.log(userFactory.allShares());
     console.log(userFactory.allMyGoals());
     console.log(userFactory.allMyShares());
     $scope.messages = userFactory.allShares();
-    console.log($scope.messages);
-    //inspirational omg heart feelya congrats lol
-    $scope.msgUpvotes =[{uid:0, i:1, o:3, h:3, f:7, c:6, l:2},
-      {uid:1, i:0, o:0, h:0, f:0, c:0, l:0}
-    ];
+
     $scope.setting = function() {
       console.log("going to setting");
       $state.go('setting');
@@ -88,14 +85,22 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
         });
     };
 
+    $scope.addToFavorites = function(message) {
+        Parse.User.current().addUnique("favorites", message);
+        Parse.User.current().save();
+    };
 
+    //$scope.checkInFavorites = function(message) {
+    //    if(Parse.User.current().get("favorites").indexOf(message) == -1)
+    //        return true;
+    //};
 
 
     //added
 
 
     // A confirm dialog
-  $scope.showFavorite = function() {
+  $scope.showFavorite = function(message) {
     var confirmPopup = $ionicPopup.confirm({
       title: 'Add to Favorite?',
       template: 'Are you sure you want to add this share to your favorites?'
@@ -103,8 +108,8 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     confirmPopup.then(function(res) {
       if(res) {
         console.log('You are sure');
-      } else {
-        console.log('You are not sure');
+        $scope.addToFavorites(message);
+        console.log(Parse.User.current().attributes.favorites);
       }
     });
   };
@@ -157,4 +162,5 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     $scope.$broadcast('scroll.refreshComplete');
   };
 
+  $scope.getShares();
 }]);

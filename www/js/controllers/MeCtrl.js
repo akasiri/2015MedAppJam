@@ -5,8 +5,9 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
     $state.go('setting');
   };
 
-  userFactory.fetchcurrent();
-  $scope.user = userFactory.getUser();
+  console.log(userFactory.allShares());
+  console.log(userFactory.allMyGoals());
+  console.log(userFactory.allMyShares());
   //$http.get("http://jsonplaceholder.typicode.com/posts/").then(function(result){
   //  // console.log(result.data);
   //  $scope.posts = result.data;
@@ -27,28 +28,8 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
     $scope.showShare = true;
   };
 
-
-  $scope.myshare = [
-
-    {
-      title: 'lol',
-      date: '28 Nov'
-    },
-    {
-      title: 'pop',
-      date: '30 Oct'
-    },
-    {
-      title: 'hoho',
-      date: '1 Sep'
-    },
-    {
-      title: 'yolo',
-      date: '12 Sep'
-    }
-
-  ];
-
+  console.log(Parse.User.current().get("favorites"));
+  $scope.myFavorites = userFactory.allMyFavorites();
 
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
@@ -140,15 +121,16 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
 
 
 
-  var refresh = function() {
-    //console.log(Parse.User.current());
-    userFactory.fetchcurrent();
-    $scope.user = userFactory.getUser();
-    //console.log($scope.user);
+  //var refresh = function() {
+  //  //console.log(Parse.User.current());
+  //  userFactory.fetchcurrent();
+  //  $scope.user = userFactory.getUser();
+  //  //console.log($scope.user);
+  //
+  //  //console.log("refresh", $scope.user);
+  //};
+  //refresh();
 
-    //console.log("refresh", $scope.user);
-  };
-  refresh();
-
+  $scope.getMyShares();
 
 }]);

@@ -109,7 +109,7 @@ main.config(['$stateProvider','$urlRouterProvider','$urlMatcherFactoryProvider',
     $stateProvider.state('resetPassword', resetPassword);
     $stateProvider.state('setting', setting);
     $stateProvider.state('edit_profile', edit_profile);
-    $stateProvider.state('transaction', goals);
+    $stateProvider.state('goal', goals);
     //$stateProvider.state('zendesk', zendesk);
 
     $stateProvider.state('tabs', tab);

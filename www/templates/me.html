@@ -16,6 +16,9 @@
       <a class="button button-positive button-outline" ng-class="{'active': showShare}" ng-click = "show_share()" >
         <p>My Shares</p>
       </a>
+      <a class="button button-positive button-outline" ng-class="{'active': showShare}" ng-click = "show_goals()" >
+        <p>My Goals</p>
+      </a>
 
 
     </div>
@@ -32,18 +35,39 @@
           on-refresh="doRefresh()">
         </ion-refresher>
       <ion-list class="list "
-                ng-controller="MeCtrl"
                 show-delete="shouldShowDelete"
                 show-reorder="shouldShowReorder"
                 can-swipe="listCanSwipe">
-        <ion-item ng-repeat= "post in myfav" post = "post" >
+        <ion-item ng-repeat= "fav in myFavorites">
           <!--<div class="item item-body">-->
-          <h2>{{post.title}}</h2>
-          <h4>date</h4>
-          <label>
-            <a href="#" class="subdued">1 understanding</a>
-            <a href="#" class="subdued">5 OMG</a>
-          </label>
+          <h4>{{formatDate(fav.createdAt)}}</h4>
+          <h2>{{fav.attributes.text}}</h2>
+          <!--<label>-->
+            <!--<a href="#" class="subdued">1 understanding</a>-->
+            <!--<a href="#" class="subdued">5 OMG</a>-->
+          <!--</label>-->
+          <div class="row">
+            <div class="col">
+              <a class="subdued royal">inspire +{{fav.attributes.categories.inspirational}}</a>
+            </div>
+            <div class="col col-offset-20">
+              <a class="subdued calm">OMG +{{fav.attributes.categories.omg}} </a>
+            </div>
+            <div class="col col-offset-20">
+              <a class="subdued assertive"><3 +{{fav.attributes.categories.heart}} </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a class="subdued energized">feel ya +{{fav.attributes.categories.feel}} </a>
+            </div>
+            <div class="col col-offset-20">
+              <a class="subdued balanced">grats!~ +{{fav.attributes.categories.congrats}} </a>
+            </div>
+            <div class="col col-offset-20">
+              <a class="subdued positive">LOL +{{fav.attributes.categories.lol}} </a>
+            </div>
+          </div>
 
           <ion-option-button class="button-positive"
                              ng-click="delete_fav(post)">
@@ -77,11 +101,10 @@
         </ion-refresher>
 
       <ion-list class="list"
-                ng-controller="MeCtrl"
                 show-delete="shouldShowDelete"
                 show-reorder="shouldShowReorder"
                 can-swipe="listCanSwipe">
-        <ion-item ng-repeat= "message in myShares" post = "post" >
+        <ion-item ng-repeat= "message in myShares">
           <!--<div class="item item-body">-->
           <h4>{{formatDate(message.createdAt)}}</h4>
           <h2>{{message.attributes.text}}</h2>
@@ -114,6 +137,7 @@
             <div class="col col-offset-20">
               <a class="subdued positive">LOL +{{message.attributes.categories.lol}} </a>
             </div>
+          </div>
 
           <ion-option-button class="button button-positive" ng-click="delete_share(message)">
             Delete

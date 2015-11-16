@@ -6,6 +6,7 @@ main.factory('userFactory', function() {
     var allShares = [];
     var allMyShares = [];
     var allMyGoals = [];
+    var allMyFavorites = [];
 
     service.getUser = function () {
         service.fetchcurrent();
@@ -25,6 +26,11 @@ main.factory('userFactory', function() {
     service.allMyGoals = function () {
       service.getAllMyGoals();
       return allMyGoals;
+    };
+
+    service.allMyFavorites = function () {
+      allMyFavorites = Parse.User.current().get("favorites");
+      return allMyFavorites;
     };
 
     service.getAllShares = function() {
