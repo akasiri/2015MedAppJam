@@ -1,4 +1,4 @@
-<ion-view view-title="Goals">
+<ion-view view-title="Goals" ng-init="getGoals()">
 
     <ion-nav-buttons side="left" ng-show="!showAdd">
         <a class="button button-clear icon ion-compose" ng-click="toggleShowAdd()"></a>
@@ -22,7 +22,7 @@
 
     </ion-content> -->
 
-    <ion-content>
+    <ion-content ng-start="getGoals()">
         <ion-refresher
           pulling-text="Pull to refresh..."
           on-refresh="doRefresh()">

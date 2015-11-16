@@ -24,8 +24,13 @@
 
 
 
-    <div class = "card card-wrapper2" ng-show="showFav">
+    <div class = "card card-wrapper2 padding" ng-show="showFav">
+
       <ion-scroll class = "xcard2scroll">
+        <ion-refresher
+          pulling-text="Pull to refresh..."
+          on-refresh="doRefresh()">
+        </ion-refresher>
       <ion-list class="list "
                 ng-controller="MeCtrl"
                 show-delete="shouldShowDelete"
@@ -63,7 +68,14 @@
 
 
     <div class = "card card-wrapper2" ng-show="showShare">
+
       <ion-scroll class = "xcard2scroll">
+
+        <ion-refresher
+          pulling-text="Pull to refresh..."
+          on-refresh="doRefresh()">
+        </ion-refresher>
+
       <ion-list class="list"
                 ng-controller="MeCtrl"
                 show-delete="shouldShowDelete"
@@ -78,8 +90,7 @@
             <a href="#" class="subdued">5 OMG</a>
           </label>
 
-          <ion-option-button class="button-positive"
-                             ng-click="delete_share(post)">
+          <ion-option-button class="button button-positive" ng-click="delete_share(post)">
             Delete
           </ion-option-button>
           <!--</div>-->
