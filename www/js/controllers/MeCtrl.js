@@ -13,6 +13,7 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
   //  $scope.posts = result.data;
   //});
   $scope.myShares = userFactory.allMyShares();
+  $scope.myGoals = [];
   console.log($scope.myShares);
 
   $scope.showShare = false;
@@ -115,6 +116,19 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
 
   };
 
+  $scope.getMyGoals = function () {
+      var query = new Parse.Query("UserGoals");
+      query.equalTo("createdBy", Parse.User.current());
+      query.equalTo("isComplete", true);
+      query.find({
+          success: function(results) {
+              $scope.myShares = result;
+          },
+          error: function(error) {
+              console.log("Failed on search for the user's completed goals.")
+          }
+      });
+  };
 
 
   $scope.doRefresh = function() {
