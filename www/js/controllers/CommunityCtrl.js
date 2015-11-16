@@ -24,6 +24,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     console.log(userFactory.allShares());
     console.log(userFactory.allMyGoals());
     console.log(userFactory.allMyShares());
+    console.log(userFactory.allMyFavorites());
     $scope.messages = userFactory.allShares();
 
     $scope.setting = function() {

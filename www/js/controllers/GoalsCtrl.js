@@ -13,6 +13,7 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
     console.log(userFactory.allShares());
     console.log(userFactory.allMyGoals());
     console.log(userFactory.allMyShares());
+    console.log(userFactory.allMyFavorites());
     $scope.goals = userFactory.allMyGoals();
     $scope.newGoal = {text: ''};
     $scope.showAdd = false;
