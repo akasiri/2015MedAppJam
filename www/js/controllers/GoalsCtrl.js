@@ -132,12 +132,31 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
     };
 
     $scope.toggleComplete = function(goal) {
-        goal.complete = !goal.complete;
+        goal.set("isComplete", goal.attributes.isComplete);
+
+        var date = new Date();
+        if (goal.attributes.isComplete == true) {
+            goal.set("completedAt", date);
+        }
+        else {
+            goal.set("completedAt", null);
+        }
+        goal.save(null, {
+            success: function () {
+                // Execute any logic that should take place after the object is saved.
+                console.log('New date set to objectId: ' + goal.id);
+            },
+            error: function(goal, error) {
+                // Execute any logic that should take place if the save fails.
+                // error is a Parse.Error with an error code and message.
+                console.log('Failed to update date, with error code: ' + error.message);
+            }
+        });
     };
 
     $scope.setting = function() {
-      console.log("going to setting");
-      $state.go('setting');
+        console.log("going to setting");
+        $state.go('setting');
     };
 
 //    $scope.goals = ["washing the car", "walking the dog", "get gold"];
