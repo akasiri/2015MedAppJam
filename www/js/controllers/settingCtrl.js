@@ -4,10 +4,16 @@ main.controller('settingCtrl', ['$scope','$state', '$ionicPopup', 'userFactory',
     $scope.user = userFactory.getUser();
 
     $scope.backToProfile = function() {
-        $state.go('tabs.me');
+
     };
 
+    $scope.changepassword = function(){
+      $state.go('resetPassword');
+    };
 
+    $scope.addnotepad = function(){
+
+    };
 
     $scope.logout = function(){
         if (userFactory.isLoggedIn()) {
