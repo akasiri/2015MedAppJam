@@ -1,7 +1,7 @@
 
 main.controller('email-loginCtrl', function($scope,$state,$ionicPopup,userFactory) {
     //console.log('login-Ctrl');
-
+$scope.navTitle = "<img src=\"asset/finalTitle2.png\">"
 
     $scope.createUser = function(){
       $state.go('signup');
