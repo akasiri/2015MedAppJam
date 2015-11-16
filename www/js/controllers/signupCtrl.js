@@ -25,11 +25,9 @@ main.controller('signupCtrl', ['$scope','$state', function($scope, $state) {
                 'favorites': []
             },{
                 success: function(user) {
-                    alert("Successfully Sign-up!");
                     $state.go('tabs.community');
                 },
                 error: function(user, error) {
-                    alert("error: " + error.code + " " + error.message);
                 }
             });
         }

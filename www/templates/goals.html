@@ -1,6 +1,6 @@
 <ion-view view-title="Goals">
 
-  <ion-nav-buttons side="left" ng-show="!showAdd">
+  <ion-nav-buttons side="left">
     <a class="button button-clear icon ion-compose" ng-click="toggleShowAdd()"></a>
   </ion-nav-buttons>
 
@@ -28,9 +28,9 @@
     <div class="list" ng-show="showAdd">
       <div class="item item-input-inset">
         <label class="item-input-wrapper">
-          <input type="text" placeholder="Enter a goal" ng-model="newGoal">
+          <input type="text" placeholder="Enter a goal" ng-model="newGoal.text">
         </label>
-        <button class="button button-positive" ng-click="add(newGoal)">
+        <button class="button button-positive" ng-click="add()">
           Submit
         </button>
       </div>

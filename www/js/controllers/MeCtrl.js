@@ -8,12 +8,15 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
   console.log(userFactory.allShares());
   console.log(userFactory.allMyGoals());
   console.log(userFactory.allMyShares());
+  console.log(userFactory.allMyFavorites());
   //$http.get("http://jsonplaceholder.typicode.com/posts/").then(function(result){
   //  // console.log(result.data);
   //  $scope.posts = result.data;
   //});
+
+  $scope.myFavorites = userFactory.allMyFavorites();
   $scope.myShares = userFactory.allMyShares();
-  $scope.myGoals = [];
+  $scope.myGoals = userFactory.allMyGoals();
   console.log($scope.myShares);
 
   $scope.showShare = true;
@@ -38,9 +41,6 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
     $scope.showGoals = true;
   };
 
-  console.log(Parse.User.current().get("favorites"));
-  $scope.myFavorites = userFactory.allMyFavorites();
-
   $scope.shouldShowDelete = false;
   $scope.shouldShowReorder = false;
   $scope.listCanSwipe = true;
@@ -61,20 +61,24 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
     confirmPopup.then(function(res) {
       // TODO: delete the post
       if (res) {
-        $scope.myfav.splice($scope.myfav.indexOf(post), 1);
+        var user = Parse.User.current();
+        var relation = user.relation("likes");
+        relation.remove(post);
+        user.save();
+        $scope.myFavorites.splice($scope.myFavorites.indexOf(post), 1);
       }
     });
 
 
-    if ( $scope.items.length == posts.length ) {
-      $scope.noMoreItemsAvailable = true;
-    }
+    //if ( $scope.items.length == $scope.myFavorites.length ) {
+    //  $scope.noMoreItemsAvailable = true;
+    //}
     $scope.$broadcast('scroll.infiniteScrollComplete');
   };
 
 
   $scope.formatDate = function(date) {
-    return moment(date).format('MMMM Do YYYY');
+    return moment(date).format('MMMM Do YYYY hh:mm');
   };
 
   $scope.getMyShares = function() {
@@ -91,6 +95,16 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
     });
   };
 
+  $scope.getMyFavorites = function() {
+    var user = Parse.User.current();
+    var relation = user.relation("likes");
+    relation.query().find({
+      success: function(list) {
+        $scope.myFavorites = list;
+      }
+    });
+  };
+
   $scope.delete_share = function(message) {
     console.log('delete share');
     var confirmPopup = $ionicPopup.confirm({
@@ -101,15 +115,14 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
       // TODO: delete the post
       if (res) {
         message.destroy({
-          success: function(myObject) {
-            $scope.myShares.splice($scope.myShares.indexOf(message),1);
-            $scope.goals.splice($scope.goals.indexOf(goal), 1);
+          success: function(myObject) {;
           },
           error: function(myObject, error) {
             // The delete failed.
             // error is a Parse.Error with an error code and message.
           }
         });
+        $scope.myShares.splice($scope.myShares.indexOf(message),1)
       }
     });
 
@@ -135,27 +148,12 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
     //TODO: get new favorite posts and shares
     $scope.getMyShares();
     $scope.getMyGoals();
+    $scope.getMyFavorites();
     $scope.$broadcast('scroll.refreshComplete');
-  }
-
-  //$scope.shouldShowDelete = false;
-  //$scope.shouldShowReorder = false;
-  //$scope.listCanSwipe = true
-
-
-
-
-  //var refresh = function() {
-  //  //console.log(Parse.User.current());
-  //  userFactory.fetchcurrent();
-  //  $scope.user = userFactory.getUser();
-  //  //console.log($scope.user);
-  //
-  //  //console.log("refresh", $scope.user);
-  //};
-  //refresh();
+  };
 
   $scope.getMyShares();
   $scope.getMyGoals();
+  $scope.getMyFavorites();
 
 }]);

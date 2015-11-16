@@ -1,6 +1,6 @@
 <ion-view view-title="Settings">
   <ion-nav-buttons side="left">
-    <a class="button button-clear icon ion-chevron-left" href="#/tab/community"> Back</a>
+    <a class="button button-clear icon ion-chevron-left" href="#/tab/me"> Back to Me</a>
   </ion-nav-buttons>
   <ion-content>
     <div class="list">
@@ -8,39 +8,50 @@
         <!--Settings-->
       <!--</div>-->
 
-      <a class=" item-divider item item-icon-left item-icon-right" href="#">
+      <a class=" item-divider item item-icon-left item-icon-right" ng-click="toggleAbout()">
         <i class="icon ion-ios-person-outline"></i>
-        <div  ng-click="backToProfile()">About Me </div>
+        <div>About Me </div>
         <i class="icon ion-ios-arrow-down"></i>
       </a>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label ">About Me (Optional)</span>
-        <textarea  class="textarea item-body" style="font-size: 9pt" rows = "4" placeholder = "I need to get Gold ranking on League." ng-model="user.about"></textarea>
-      </label>
+      <div class="showAbout" ng-show="showAbout">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">About Me (Optional)</span>
+          <textarea  class="textarea item-body" style="font-size: 9pt" rows = "4" placeholder = "I need to get Gold ranking on League." ng-model="about.text"></textarea>
+        </label>
+      </div>
 
-      <a class="item-divider item item-icon-left item-icon-right" href="#">
+
+      <a class="item-divider item item-icon-left item-icon-right" ng-click="togglePassword()">
         <i class="icon ion-ios-locked-outline"></i>
-        <div  ng-click="changepassword()">Change Password</div>
+        <div>Change Password</div>
         <i class="icon ion-ios-arrow-down"></i>
 
       </a>
-      <label class = "item item-input item-stacked-label ">
+      <label class = "item item-input item-stacked-label" ng-show="showPassword">
         <span class="input-label"> Password </span>
         <input type="Password" placeholder="password123" ng-model="user.password">
       </label>
 
-      <a class="item-divider item item-icon-left item-icon-right" href="#">
+      <a class="item-divider item item-icon-left item-icon-right" ng-click="toggleNotepad()">
         <i class="icon ion-ios-paper-outline"></i>
-        <div  ng-click="addnotepad()">Edit notepad</div>
+        <div>Edit notepad</div>
         <i class="icon ion-ios-arrow-right"></i>
       </a>
+      <label class="item item-input item-stacked-label" ng-show="showNotepad">
+        <span class="input-label">Notepad</span>
+        <textarea  class="textarea item-body" style="font-size: 9pt" rows = "4" placeholder = "Write down any notes you want such as questions you may want to ask your physician." ng-model="notepad.text"></textarea>
+      </label>
 
-      <a class="item-divider item item-icon-left item-icon-right" href="#">
-        <i class="icon ion-ios-minus-outline"></i>
-        <div  ng-click="logout()">Log Out</div>
-
+      <a class="item-divider item item-icon-left item-icon-right" ng-click="logout()">
+        <i class='icon ion-ios-minus-outline'></i>
+        <div>Log Out</div>
       </a>
 
+      <br>
+      <br>
+      <div class="text-center">
+        <button class="button button-positive" ng-click="saveChanges()">Save Changes</button>
+      </div>
     </div>
   </ion-content>
 </ion-view>

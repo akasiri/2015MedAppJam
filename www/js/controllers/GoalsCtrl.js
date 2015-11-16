@@ -14,7 +14,7 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
     console.log(userFactory.allMyGoals());
     console.log(userFactory.allMyShares());
     $scope.goals = userFactory.allMyGoals();
-    $scope.newGoal = "";
+    $scope.newGoal = {text: ''};
     $scope.showAdd = false;
 
 // display goals on open
@@ -23,11 +23,6 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
 // list entry size
 // archive button and section
 
-    $scope.initGoals = function() {
-        console.log("just got to initGoals()");
-        $scope.doRefresh();
-//        $state.go($state.current, {}, {reload: true});
-    }
 
     var checkIfGoalExists = function(goal, list) {
         var listLen = list.length;
@@ -81,13 +76,13 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
 //        $scope.doRefresh();
     };
 
-    $scope.add = function(newGoal) {
+    $scope.add = function() {
         // if (!checkIfGoalExists(newGoal, $scope.goals)) {
-            if (newGoal != "") {
+            if ($scope.newGoal.text != "") {
 
             var Goal = Parse.Object.extend("UserGoals");
             var goal = new Goal();
-            goal.set("text", newGoal);
+            goal.set("text", $scope.newGoal.text);
             goal.set("createdBy", Parse.User.current());
             goal.set("active", true);
             goal.set("isComplete", false);
@@ -102,12 +97,13 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
                     // error is a Parse.Error with an error code and message.
                     console.log('Failed to create new object, with error code: ' + error.message);
                 }
-            })
+            });
 
             $scope.goals[$scope.goals.length] = goal;
 //            $scope.doRefresh();
 
             $scope.showAdd = false;
+              $scope.newGoal.text = "";
 
             }
             else {
@@ -160,80 +156,6 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
     };
 
 //    $scope.goals = ["washing the car", "walking the dog", "get gold"];
-    //Alert success if added the transaction, then clear the fields so user can send another transaction
-    var alertSuccess = function () {
-        var alertPopup = $ionicPopup.alert({
-            title: 'Success',
-            template: 'You have successfully transferred to ' + $scope.data.name
-        });
-        alertPopup.then(function (res) {
-            $scope.confirm_modal.hide();
-            $scope.data = {
-                name: "",
-                amount: "",
-                note: ""
-            };
-        });
-    };
-
-    //Alert error if something went wrong, then close the confirm modal.
-    var alertError = function () {
-        var alertPopup = $ionicPopup.alert({
-            title: 'Error',
-            template: 'Something went wrong.'
-        });
-        alertPopup.then(function (res) {
-            $scope.confirm_modal.hide();
-            $scope.data = {
-                name: "",
-                amount: "",
-                note: ""
-            };
-        });
-    };
-
-    //Alert incorrect email or name, then clear the fields so user can enter again.
-    var alertBadName = function () {
-        var alertPopup = $ionicPopup.alert({
-            title: 'Error',
-            template: 'Select a user!'
-
-        });
-        alertPopup.then(function (res) {
-            $scope.confirm_modal.hide();
-            $scope.data = {
-                name: "",
-                amount: "",
-                note: ""
-            };
-        });
-    };
-
-    //Alert user if amount entered isn't a valid number
-    var alertInvalidAmount = function () {
-        var alertPopup = $ionicPopup.alert({
-            title: 'Error',
-            template: 'Invalid number, enter again!'
-
-        });
-        alertPopup.then(function (res) {
-            $scope.confirm_modal.hide();
-            $scope.data = {
-                name: "",
-                amount: "",
-                note: ""
-            };
-        });
-    };
-
-    //Alert name or amount field is empty and tell them to enter again.
-    var alertEmpty = function () {
-        var alertPopup = $ionicPopup.alert({
-            title: 'Error',
-            template: 'Enter both name and amount'
-        });
-    };
-
 
     $scope.doRefresh = function() {
         $scope.getGoals();

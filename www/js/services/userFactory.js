@@ -29,8 +29,15 @@ main.factory('userFactory', function() {
     };
 
     service.allMyFavorites = function () {
-      allMyFavorites = Parse.User.current().get("favorites");
+      service.getAllMyFavorites();
       return allMyFavorites;
+    };
+
+    service.clear = function () {
+      allShares = null;
+      allMyShares = null;
+      allMyGoals = null;
+      allMyFavorites = null;
     };
 
     service.getAllShares = function() {
@@ -84,6 +91,17 @@ main.factory('userFactory', function() {
         }
       })
     };
+
+    service.getAllMyFavorites = function() {
+      var user = Parse.User.current();
+      var relation = user.relation("likes");
+      relation.query().find({
+        success: function(list) {
+          allMyFavorites = list;
+        }
+      });
+    };
+
     service.fetchcurrent = function () {
             var current_user = Parse.User.current();
             //console.log("fetch from Parse", current_user);
@@ -94,7 +112,6 @@ main.factory('userFactory', function() {
                     "lastname": current_user.attributes.last_name,
                     "email": current_user.attributes.email,
                     "about" : current_user.attributes.about,
-                    "message_count" : 0
                 };
                 isLoggedIn = true;
             }

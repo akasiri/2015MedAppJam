@@ -41,7 +41,8 @@
         <ion-item ng-repeat= "fav in myFavorites">
           <!--<div class="item item-body">-->
           <h4>{{formatDate(fav.createdAt)}}</h4>
-          <h2>{{fav.attributes.text}}</h2>
+          <div class="row"></div>
+          <h2 ng-class="{'royal': fav.attributes.primaryCategory=='Inspirational', 'calm': fav.attributes.primaryCategory=='OMG', 'assertive': fav.attributes.primaryCategory=='<3', 'energized': fav.attributes.primaryCategory=='feel ya', 'balanced': fav.attributes.primaryCategory=='Congrats~!~', 'positive': fav.attributes.primaryCategory=='LOL!'}">{{fav.attributes.text}}</h2>
           <!--<label>-->
             <!--<a href="#" class="subdued">1 understanding</a>-->
             <!--<a href="#" class="subdued">5 OMG</a>-->
@@ -69,8 +70,8 @@
             </div>
           </div>
 
-          <ion-option-button class="button-positive"
-                             ng-click="delete_fav(post)">
+          <ion-option-button class="button-assertive"
+                             ng-click="delete_fav(fav)">
             Delete
           </ion-option-button>
           <!--</div>-->
@@ -108,7 +109,8 @@
           <!--<div class="item item-body">-->
           <h4>{{formatDate(message.createdAt)}}</h4>
           <h4>Current mood: {{message.attributes.mood}}</h4>
-          <h2>{{message.attributes.text}}</h2>
+          <div class="row"></div>
+          <h2 ng-class="{'royal': message.attributes.primaryCategory=='Inspirational', 'calm': message.attributes.primaryCategory=='OMG', 'assertive': message.attributes.primaryCategory=='<3', 'energized': message.attributes.primaryCategory=='feel ya', 'balanced': message.attributes.primaryCategory=='Congrats~!~', 'positive': message.attributes.primaryCategory=='LOL!'}">{{message.attributes.text}}</h2>
           <!--<label>-->
             <!--<a class="subdued royal">inspire +{{share.attributes.categories.inspirational}}</a>-->
             <!--<a class="subdued calm">OMG +{{share.attributes.categories.omg}}</a>-->
@@ -140,7 +142,7 @@
             </div>
           </div>
 
-          <ion-option-button class="button button-positive" ng-click="delete_share(message)">
+          <ion-option-button class="button button-assertive" ng-click="delete_share(message)">
             Delete
           </ion-option-button>
           <!--</div>-->
@@ -172,8 +174,10 @@
 
           <ion-item ng-repeat= "goal in myGoals">
             <!--<div class="item item-body">-->
-            <h4>{{formatDate(goal.attributes.createdAt)}}</h4>
-            <h2>{{goal.attributes.text}}</h2>
+            <h4>Created on: {{formatDate(goal.attributes.createdAt)}}</h4>
+            <div class="row"></div>
+            <h2 >{{goal.attributes.text}}</h2>
+            <div class="row"></div>
             <h4>Completed on: {{formatDate(goal.attributes.competedAt)}}</h4>
             <!--<label>-->
             <!--<a href="#" class="subdued">1 understanding</a>-->

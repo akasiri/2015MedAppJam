@@ -1,18 +1,20 @@
 <a href="https://icons8.com">Icon pack by Icons8</a>
 
-
-
 <ion-view view-title="Community">
+  <ion-nav-buttons side="left">
+    <a class="button button-clear icon ion-compose" ng-click="toggle_write()"></a>
+  </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <a class="button button-clear icon ion-gear-b" href="#/setting"></a>
   </ion-nav-buttons>
   <ion-content>
+    <span ng-show="show_write">
     <label class="item item-input item-stacked-label padding">
       <span class="input-label">Share your thoughts</span>
       <textarea ng-model="share.text" class="textarea" ng-class="{'royal': slider.rangeValue==1, 'calm': slider.rangeValue==2, 'assertive': slider.rangeValue==3, 'energized': slider.rangeValue==4, 'balanced': slider.rangeValue==5, 'positive': slider.rangeValue==6}" rows = "3" placeholder = "Hi {{user.firstname}}! What's on your mind?"></textarea>
       <div class="item item-input-inset">
         <label class="item-input-wrapper">
-          <input ng-model="mood.text" type="text" class="item-text-wrap" placeholder="How are you feeling? (This won't be visible to others)">
+          <input ng-model="mood.text" type="text" class="item-text-wrap" placeholder="How are you feeling? (Not visible to others)">
         </label>
       </div>
     </label>
@@ -67,24 +69,25 @@
       </div>
 
         <div class="col text-right">
-          <button class="button" ng-class="{'button-stable': slider.rangeValue==0, 'button-royal': slider.rangeValue==1, 'button-calm': slider.rangeValue==2, 'button-assertive': slider.rangeValue==3, 'button-energized': slider.rangeValue==4, 'button-balanced': slider.rangeValue==5, 'button-positive': slider.rangeValue==6}" ng-click="showSubmit()">
+          <button class="button button-positive" ng-click="showSubmit()">
             Submit
           </button>
         </div>
     </div>
+    </span>
 
     <label class="item item-input item-select">
       <div class="input-label">
         Recent
       </div>
-      <select>
-        <option selected>Recent</option>
-        <option>Inspirational</option>
-        <option>OMG</option>
-        <option><3</option>
-        <option>feel ya</option>
-        <option>Congrats~!~</option>
-        <option>LoL!</option>
+      <select ng-change="chooseCategory()" ng-model="selectedCategory.text">
+        <option value="Recent">Recent</option>
+        <option value="Inspirational">Inspirational</option>
+        <option value="OMG">OMG</option>
+        <option value="<3"><3</option>
+        <option value="feel ya">feel ya</option>
+        <option value="Congrats~!~">Congrats~!~</option>
+        <option value="LOL!">LoL!</option>
       </select>
     </label>
 
@@ -97,8 +100,9 @@
 
         <div class="padding-left item-text-wrap " >
             {{timeAgo(message.createdAt)}}
+            <div class="row"></div>
 
-            <p class="paddingRight1">{{message.attributes.text}}</p>
+            <h4 class="paddingRight1" ng-class="{'royal': message.attributes.primaryCategory=='Inspirational', 'calm': message.attributes.primaryCategory=='OMG', 'assertive': message.attributes.primaryCategory=='<3', 'energized': message.attributes.primaryCategory=='feel ya', 'balanced': message.attributes.primaryCategory=='Congrats~!~', 'positive': message.attributes.primaryCategory=='LOL!'}">{{message.attributes.text}}</h4>
 
 
           <div class="row item-button-right">
@@ -138,6 +142,14 @@
             <button class="button button-clear" ng-click="showFavorite(message)">
               <i class="icon ion-star energized"></i>
             </button>
+
+            <!--<button ng-if="checkInFavorites" class="button button-clear">-->
+              <!--<i class="icon ion-star energized"></i>-->
+            <!--</button>-->
+
+            <!--<button ng-if="checkInFavorites" class="button button-clear" ng-click="showFavorite(message)">-->
+              <!--<i class="icon ion-star"></i>-->
+            <!--</button>-->
 
 
           </div>

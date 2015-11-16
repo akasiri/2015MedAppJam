@@ -8,10 +8,17 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     $scope.slider = {};
     $scope.slider.rangeValue = 0;
 
+    $scope.show_write = true;
+
+    $scope.toggle_write = function() {
+      $scope.show_write=!$scope.show_write;
+    }
+
+    $scope.selectedCategory = {text: 'Recent'};
+
     $scope.$watch('slider.rangeValue',function(val,old){
       $scope.slider.rangeValue = parseInt(val);
       console.log('range=' + $scope.slider.rangeValue)
-
     });
 
     console.log(userFactory.allShares());
@@ -30,6 +37,22 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
 
         var Share = Parse.Object.extend("Share");
         var share = new Share();
+
+        if($scope.slider.rangeValue==0)
+          share.set("primaryCategory", "none");
+        else if($scope.slider.rangeValue==1)
+          share.set("primaryCategory", "Inspirational");
+        else if($scope.slider.rangeValue==2)
+          share.set("primaryCategory", "OMG");
+        else if($scope.slider.rangeValue==3)
+          share.set("primaryCategory", "<3");
+        else if($scope.slider.rangeValue==4)
+          share.set("primaryCategory", "feel ya");
+        else if($scope.slider.rangeValue==5)
+          share.set("primaryCategory", "Congrats~!~");
+        else if($scope.slider.rangeValue==6)
+          share.set("primaryCategory", "LOL!");
+
         share.set("text", $scope.share.text);
         share.set("categories", {inspirational: 0, omg: 0, heart: 0, feel: 0, congrats: 0, lol: 0});
         share.set("createdBy", Parse.User.current());
@@ -39,12 +62,10 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
         share.save(null, {
           success: function(share) {
             // Execute any logic that should take place after the object is saved.
-            alert('New object created with objectId: ' + share.id);
           },
           error: function(share, error) {
             // Execute any logic that should take place if the save fails.
             // error is a Parse.Error with an error code and message.
-            alert('Failed to create new object, with error code: ' + error.message);
           }
         });
 
@@ -58,6 +79,7 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
     };
 
     $scope.getShares = function() {
+      $scope.messages = [];
         var Share = Parse.Object.extend("Share");
         var query = new Parse.Query(Share);
         query.limit(10);
@@ -70,35 +92,162 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
               console.log($scope.messages);
           },
           error: function(error) {
-              alert("Error: " + error.code + " " + error.message);
           }
         });
     };
 
-  //popup for error/success
-    var alertError = function(err) {
-        var alertPopup = $ionicPopup.alert({
-            title: 'Error',
-            template: err.message
-        });
+    $scope.getInspirationalShares = function() {
+      $scope.messages = [];
+      var Share = Parse.Object.extend("Share");
+      var query = new Parse.Query(Share);
+      query.descending("createdAt");
+      query.equalTo("primaryCategory", "Inspirational");
+      query.find({
+        success: function(results) {
+          for (var i = 0; i < results.length; i++) {
+            $scope.messages[i] = results[i];
+          };
+          console.log($scope.messages);
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
     };
 
-    var alertSuccess = function(msg) {
-        var alertPopup = $ionicPopup.alert({
-            title: 'Success',
-            template: err.message
-        });
+    $scope.getOMGShares = function() {
+      $scope.messages = [];
+      var Share = Parse.Object.extend("Share");
+      var query = new Parse.Query(Share);
+      query.descending("createdAt");
+      query.equalTo("primaryCategory", "OMG");
+      query.find({
+        success: function(results) {
+          for (var i = 0; i < results.length; i++) {
+            $scope.messages[i] = results[i];
+          };
+          console.log($scope.messages);
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    };
+
+    $scope.getHeartShares = function() {
+      $scope.messages = [];
+      var Share = Parse.Object.extend("Share");
+      var query = new Parse.Query(Share);
+      query.descending("createdAt");
+      query.equalTo("primaryCategory", "<3");
+      query.find({
+        success: function(results) {
+          for (var i = 0; i < results.length; i++) {
+            $scope.messages[i] = results[i];
+          };
+          console.log($scope.messages);
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    };
+
+    $scope.getFeelShares = function() {
+      $scope.messages = [];
+      var Share = Parse.Object.extend("Share");
+      var query = new Parse.Query(Share);
+      query.descending("createdAt");
+      query.equalTo("primaryCategory", "feel ya");
+      query.find({
+        success: function(results) {
+          for (var i = 0; i < results.length; i++) {
+            $scope.messages[i] = results[i];
+          };
+          console.log($scope.messages);
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    };
+
+    $scope.getCongratShares = function() {
+      $scope.messages = [];
+      var Share = Parse.Object.extend("Share");
+      var query = new Parse.Query(Share);
+      query.descending("createdAt");
+      query.equalTo("primaryCategory", "Congrats~!~");
+      query.find({
+        success: function(results) {
+          for (var i = 0; i < results.length; i++) {
+            $scope.messages[i] = results[i];
+          };
+          console.log($scope.messages);
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    };
+
+    $scope.getLOLShares = function() {
+      $scope.messages = [];
+      var Share = Parse.Object.extend("Share");
+      var query = new Parse.Query(Share);
+      query.descending("createdAt");
+      query.equalTo("primaryCategory", "LOL!");
+      query.find({
+        success: function(results) {
+          for (var i = 0; i < results.length; i++) {
+            $scope.messages[i] = results[i];
+          };
+          console.log($scope.messages);
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    };
+
+    $scope.chooseCategory = function() {
+      console.log("selected");
+      console.log($scope.selectedCategory.text);
+      if($scope.selectedCategory.text == "Recent")
+        $scope.getShares();
+      else if($scope.selectedCategory.text == "Inspirational")
+        $scope.getInspirationalShares();
+      else if($scope.selectedCategory.text == "OMG")
+        $scope.getOMGShares();
+      else if($scope.selectedCategory.text == "<3")
+        $scope.getHeartShares();
+      else if($scope.selectedCategory.text == "feel ya")
+        $scope.getFeelShares();
+      else if($scope.selectedCategory.text == "Congrats~!~")
+        $scope.getCongratShares();
+      else if($scope.selectedCategory.text == "LOL!")
+        $scope.getLOLShares();
     };
 
     $scope.addToFavorites = function(message) {
-        Parse.User.current().addUnique("favorites", message);
-        Parse.User.current().save();
+        var user = Parse.User.current();
+        var relation = user.relation("likes");
+        relation.add(message);
+        user.save();
     };
 
     //$scope.checkInFavorites = function(message) {
-    //    if(Parse.User.current().get("favorites").indexOf(message) == -1)
-    //        return true;
-    //};
+    //  var favorites = [];
+    //  var user = Parse.User.current();
+    //  var relation = user.relation("likes");
+    //  relation.query().find({
+    //    success: function(list) {
+    //      favorites = list;
+    //    }
+    //  });
+    //  if(favorites.indexOf(message) == -1)
+    //    return false;
+    //  };
 
 
     //added
@@ -114,7 +263,6 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
       if(res) {
         console.log('You are sure');
         $scope.addToFavorites(message);
-        console.log(Parse.User.current().attributes.favorites);
       }
     });
   };
@@ -163,9 +311,8 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
 
 
   $scope.doRefresh = function() {
-    $scope.getShares();
+    $scope.chooseCategory();
     $scope.$broadcast('scroll.refreshComplete');
-    console.log($scope.mood);
   };
 
   $scope.getShares();
