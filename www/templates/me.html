@@ -158,23 +158,27 @@
     <div class = "card card-wrapper2 padding" ng-show="showGoals">
 
       <ion-scroll class = "xcard2scroll">
+
         <ion-refresher
           pulling-text="Pull to refresh..."
           on-refresh="doRefresh()">
         </ion-refresher>
+
         <ion-list class="list "
                   show-delete="shouldShowDelete"
                   show-reorder="shouldShowReorder"
                   can-swipe="listCanSwipe">
-          <ion-item ng-repeat= "fav in myFavorites">
+
+          <ion-item ng-repeat= "goal in myGoals">
             <!--<div class="item item-body">-->
-            <h4>{{formatDate(fav.createdAt)}}</h4>
-            <h2>{{fav.attributes.text}}</h2>
+            <h4>{{formatDate(goal.attributes.createdAt)}}</h4>
+            <h2>{{goal.attributes.text}}</h2>
+            <h4>Completed on: {{formatDate(goal.attributes.competedAt)}}</h4>
             <!--<label>-->
             <!--<a href="#" class="subdued">1 understanding</a>-->
             <!--<a href="#" class="subdued">5 OMG</a>-->
             <!--</label>-->
-            <div class="row">
+            <!-- <div class="row">
               <div class="col">
                 <a class="subdued royal">inspire +{{fav.attributes.categories.inspirational}}</a>
               </div>
@@ -195,12 +199,12 @@
               <div class="col col-offset-20">
                 <a class="subdued positive">LOL +{{fav.attributes.categories.lol}} </a>
               </div>
-            </div>
+            </div> -->
 
-            <ion-option-button class="button-positive"
+            <!-- <ion-option-button class="button-positive"
                                ng-click="delete_fav(post)">
               Delete
-            </ion-option-button>
+            </ion-option-button> -->
             <!--</div>-->
           </ion-item>
           <!--<div class="item tabs tabs-secondary tabs-icon-left">-->
@@ -210,7 +214,7 @@
           <!--</a>-->
           <!--</div>-->
 
-        </ion-list>
+      </ion-list>
 
         </ion-scroll>
       </div>
