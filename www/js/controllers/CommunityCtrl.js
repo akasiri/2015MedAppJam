@@ -138,37 +138,32 @@ main.controller('CommunityCtrl', ['$scope','$state','$ionicModal', 'userFactory'
   };
 
   //buttons on the bottom of posts
-  $scope.clickedInspirational = function() {
-    var relation = message.attributes.categories.inspirational.relation("upvotedBy");
-    relation.add(Parse.User.current());
-  }
-  $scope.clickedOmg = function() {
+  $scope.clickedInspirational = function(message) {
+      message.attributes.categories.inspirational++;
+      message.save();
+  };
 
-  }
-  $scope.clickedHeart = function() {
+  $scope.clickedOmg = function(message) {
+      message.attributes.categories.omg++;
+      message.save();
+  };
+  $scope.clickedHeart = function(message) {
+      message.attributes.categories.heart++;
+      message.save();
+  };
+  $scope.clickedFeel = function(message) {
+      message.attributes.categories.feel++;
+      message.save();
+  };
+  $scope.clickedGrats = function(message) {
+      message.attributes.categories.congrats++;
+      message.save();
+  };
+  $scope.clickedLol = function(message) {
+      message.attributes.categories.lol++;
+      message.save();
+  };
 
-  }
-  $scope.clickedFeel = function() {
-
-  }
-  $scope.clickedGrats = function() {
-
-  }
-  $scope.clickedLol = function() {
-
-  }
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> d0316f0cf73329c229a20910fcc1414e0aefaf85
 
 // Triggered on a button click, or some other target
   $scope.showUpvotes = function() {
