@@ -7,6 +7,8 @@ main.controller('settingCtrl', ['$scope','$state', '$ionicPopup', 'userFactory',
         $state.go('tabs.me');
     };
 
+
+
     $scope.logout = function(){
         if (userFactory.isLoggedIn()) {
             //console.log("logging out", $scope.user.id);
