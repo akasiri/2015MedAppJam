@@ -130,6 +130,8 @@ main.controller('GoalsCtrl', ['$scope', '$state', '$ionicModal', '$ionicPopup', 
 
     $scope.toggleComplete = function(goal) {
         goal.complete = !goal.complete;
+        goal.set("isComplete", goal.complete);
+        goal.save();
     };
 
     $scope.setting = function() {
