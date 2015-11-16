@@ -122,7 +122,7 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
       query.equalTo("isComplete", true);
       query.find({
           success: function(results) {
-              $scope.myShares = result;
+              $scope.myGoals = results;
           },
           error: function(error) {
               console.log("Failed on search for the user's completed goals.")
@@ -134,6 +134,7 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
   $scope.doRefresh = function() {
     //TODO: get new favorite posts and shares
     $scope.getMyShares();
+    $scope.getMyGoals();
     $scope.$broadcast('scroll.refreshComplete');
   }
 
@@ -155,5 +156,6 @@ main.controller('MeCtrl', ['$scope', '$ionicModal' ,'$state', 'userFactory', '$i
   //refresh();
 
   $scope.getMyShares();
+  $scope.getMyGoals();
 
 }]);
