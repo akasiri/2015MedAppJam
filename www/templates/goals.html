@@ -23,6 +23,10 @@
     </ion-content> -->
 
     <ion-content>
+        <ion-refresher
+          pulling-text="Pull to refresh..."
+          on-refresh="doRefresh()">
+        </ion-refresher>
 
         <div class="list" ng-show="showAdd">
           <div class="item item-input-inset">
@@ -37,8 +41,8 @@
 
         <ion-list>
             <ion-item ng-repeat="goal in goals">
-                <input type="checkbox" ng-click="toggleComplete(goal)">
-                {{ goal.text }}
+                <input type="checkbox" ng-click="toggleComplete(goal)" ng-model=goal.attributes.isComplete>
+                {{ goal.attributes.text }}
                 <ion-option-button class="button-assertive button-remove" ng-click="remove(goal)">Remove</ion-option-button>
             </ion-item>
         </ion-list>
